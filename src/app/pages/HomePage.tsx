@@ -95,7 +95,6 @@ export function HomePage({
         />
       </section>
 
-      {/* PROJECTS */}
       <section id="work" className="border-t border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-14 flex items-end justify-between gap-6">
@@ -188,7 +187,6 @@ export function HomePage({
         </div>
       </section>
 
-      {/* BLOG TEASER */}
       <section className="border-t border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-12 flex items-end justify-between gap-6">
@@ -291,5 +289,3 @@ export function HomePage({
     </>
   );
 }
-
-// ─── About Page ───────────────────────────────────────────────────────────────

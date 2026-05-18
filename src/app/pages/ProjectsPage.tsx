@@ -103,7 +103,6 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
             ))}
           </div>
 
-          {/* Empty slot — add more projects here */}
           <div className="mt-6 overflow-hidden rounded-2xl border border-dashed border-border">
             <div className="flex flex-col items-center justify-center gap-3 py-16 text-center">
               <div
@@ -118,9 +117,6 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
               >
                 More projects coming soon
               </p>
-              <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground/60">
-                Add entries to the <code className="font-mono text-[10px]">projects</code> array in data/portfolio.ts
-              </p>
             </div>
           </div>
         </div>
@@ -130,5 +126,3 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
     </>
   );
 }
-
-// ─── Shared Footer ────────────────────────────────────────────────────────────

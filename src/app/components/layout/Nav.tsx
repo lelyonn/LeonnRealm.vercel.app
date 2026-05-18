@@ -58,5 +58,3 @@ export function Nav({ page, navigate }: { page: Page; navigate: (to: Page) => vo
     </header>
   );
 }
-
-// ─── Home Page ────────────────────────────────────────────────────────────────

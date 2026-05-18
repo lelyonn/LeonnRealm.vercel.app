@@ -31,5 +31,3 @@ export function useRoute() {
 
   return { page, navigate };
 }
-
-// ─── Root ─────────────────────────────────────────────────────────────────────

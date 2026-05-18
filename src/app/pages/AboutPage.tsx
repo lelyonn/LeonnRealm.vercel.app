@@ -17,7 +17,6 @@ export function AboutPage({
 }) {
   return (
     <>
-      {/* Hero ---------------------------------------------------------------- */}
       <section className="relative overflow-hidden border-b border-border">
         <div
           aria-hidden
@@ -88,7 +87,6 @@ export function AboutPage({
               </div>
             </div>
 
-            {/* Portrait card */}
             <div className="relative">
               <div className="sticky top-28">
                 <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-[3/4]">
@@ -101,14 +99,12 @@ export function AboutPage({
                     aria-hidden
                     className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent"
                   />
-                  {/* Gold accent ring */}
                   <div
                     aria-hidden
                     className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full border border-[#c8a96a]/20 spin-slow"
                   />
                 </div>
 
-                {/* Stat chips below portrait */}
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   {[
                     { value: "4+", label: "Projects shipped" },
@@ -133,7 +129,6 @@ export function AboutPage({
         </div>
       </section>
 
-      {/* Pull quote ---------------------------------------------------------- */}
       <section className="border-b border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <p
@@ -151,7 +146,6 @@ export function AboutPage({
         </div>
       </section>
 
-      {/* Competitions -------------------------------------------------------- */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-14 grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
@@ -175,7 +169,6 @@ export function AboutPage({
                   key={c.index}
                   className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:bg-card"
                 >
-                  {/* Gold accent top bar */}
                   <div className="h-px w-full bg-gradient-to-r from-[#c8a96a]/60 via-[#c8a96a]/20 to-transparent" />
 
                   <div className="p-8 md:p-10">
@@ -237,7 +230,6 @@ export function AboutPage({
                         </div>
                       </div>
 
-                      {/* Index badge */}
                       <div
                         className="flex-shrink-0 text-5xl tracking-tight text-border transition-colors group-hover:text-[#c8a96a]/20 md:text-6xl"
                         style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
@@ -254,7 +246,6 @@ export function AboutPage({
       </section>
 
 
-      {/* GitHub Stats -------------------------------------------------------- */}
       <section className="border-b border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-14 grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
@@ -345,7 +336,6 @@ export function AboutPage({
         </div>
       </section>
 
-      {/* CTA ----------------------------------------------------------------- */}
       <section id="lets-connect" className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
           <div className="mx-auto max-w-2xl">
@@ -363,7 +353,6 @@ export function AboutPage({
             </h2>
 
             <div className="divide-y divide-dashed divide-border overflow-hidden rounded-2xl border border-dashed border-border">
-              {/* Email */}
               <a
                 href="mailto:leonardjhth091@gmail.com"
                 className="group flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-card"
@@ -385,7 +374,6 @@ export function AboutPage({
                 </div>
               </a>
 
-              {/* Discord */}
               <a
                 href="https://discord.com/users/437897372610330625"
                 target="_blank"
@@ -408,7 +396,6 @@ export function AboutPage({
                 </div>
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/leonardjhthh"
                 target="_blank"
@@ -427,7 +414,6 @@ export function AboutPage({
                 </div>
               </a>
 
-              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/leonard-jonathan-s-a7a113324/"
                 target="_blank"
@@ -446,7 +432,6 @@ export function AboutPage({
                 </div>
               </a>
 
-              {/* GitHub */}
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"
@@ -473,5 +458,3 @@ export function AboutPage({
     </>
   );
 }
-
-// ─── Blog data ────────────────────────────────────────────────────────────────

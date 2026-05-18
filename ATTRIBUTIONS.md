@@ -1,3 +1,6 @@
-This portfolio includes components from [shadcn/ui](https://ui.shadcn.com/) used under the [MIT license](https://github.com/shadcn-ui/ui/blob/main/LICENSE.md).
+This portfolio uses open-source UI primitives and icons from:
 
-This portfolio includes photos from [Unsplash](https://unsplash.com) used under the [Unsplash license](https://unsplash.com/license).
+- [Radix UI](https://www.radix-ui.com/) under the MIT license.
+- [Lucide](https://lucide.dev/) under the ISC license.
+
+Personal photos and portfolio documents in `src/imports/` belong to Leonard Jonathan Saputra and are included as portfolio content.

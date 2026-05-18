@@ -1,7 +1,16 @@
 
 # Leonard Jonathan Saputra Portfolio
 
-React + Vite portfolio site generated from a Figma Make starting point and cleaned up for production builds.
+A personal portfolio for Leonard Jonathan Saputra, built with React, Vite, TypeScript, and Tailwind CSS. The site highlights cybersecurity interests, selected writing, project work, and contact links in a compact single-page experience.
+
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS 4
+- Radix UI Dialog
+- Lucide React icons
 
 ## Local Development
 
@@ -42,4 +51,3 @@ Shared UI for the main layout lives in `src/app/components/layout/`, and skill-s
 ## Deployment Notes
 
 This app builds to the `dist/` directory with `npm run build`. It can be hosted on static platforms such as Vercel, Netlify, Cloudflare Pages, or GitHub Pages. The app currently uses hash routes (`#/about`, `#/projects`, `#/blog`), so it does not need server-side route rewrites.
-  

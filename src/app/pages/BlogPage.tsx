@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { blogPosts, categoryColors, type BlogPost } from "../data/portfolio";
 import { SharedFooter } from "../components/layout/SharedFooter";
 import type { Page } from "../types";
@@ -49,7 +49,6 @@ export function BlogPage({ navigate }: { navigate: (to: Page) => void }) {
             CTF walkthroughs, bug bounty notes, security research, and the occasional opinion piece.
           </p>
 
-          {/* Category filter */}
           <div className="mt-10 flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
@@ -229,5 +228,3 @@ function BlogPostView({ post, onBack }: { post: BlogPost; onBack: () => void }) 
     </>
   );
 }
-
-// ─── Projects Page ────────────────────────────────────────────────────────────
