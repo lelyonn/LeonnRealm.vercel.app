@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Nav } from "./components/layout/Nav";
 import { SkillDialog } from "./components/skills/SkillDialog";
 import { AboutPage } from "./pages/AboutPage";
@@ -15,6 +15,7 @@ export default function App() {
 
   return (
     <div className="site-shell min-h-screen w-full text-foreground" style={{ fontFamily: "var(--font-sans)" }}>
+      <CursorGlow />
       <Nav page={page} navigate={navigate} />
 
       <main key={page} className="page-transition">
@@ -115,6 +116,39 @@ export default function App() {
             inset 0 -42px 90px rgba(27, 44, 193, 0.26);
           opacity: 0.82;
         }
+        .cursor-glow {
+          --cursor-x: -100px;
+          --cursor-y: -100px;
+          position: fixed;
+          left: var(--cursor-x);
+          top: var(--cursor-y);
+          z-index: 80;
+          width: 18px;
+          height: 18px;
+          pointer-events: none;
+          border: 1px solid rgba(171, 210, 250, 0.78);
+          border-radius: 9999px;
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.82);
+          transition: opacity 180ms ease, transform 180ms ease;
+          box-shadow:
+            0 0 18px rgba(171, 210, 250, 0.72),
+            0 0 42px rgba(118, 146, 255, 0.36),
+            inset 0 0 10px rgba(171, 210, 250, 0.22);
+          background:
+            radial-gradient(circle, rgba(171, 210, 250, 0.34), transparent 58%),
+            rgba(118, 146, 255, 0.08);
+          mix-blend-mode: screen;
+        }
+        .cursor-glow[data-visible="true"] {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+          .cursor-glow {
+            display: none;
+          }
+        }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
@@ -129,4 +163,45 @@ export default function App() {
       `}</style>
     </div>
   );
+}
+
+function CursorGlow() {
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)");
+    let frame = 0;
+
+    const hide = () => {
+      const glow = glowRef.current;
+      if (glow) glow.dataset.visible = "false";
+    };
+
+    const move = (event: MouseEvent) => {
+      if (!media.matches) return;
+
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const glow = glowRef.current;
+        if (!glow) return;
+
+        glow.style.setProperty("--cursor-x", `${event.clientX}px`);
+        glow.style.setProperty("--cursor-y", `${event.clientY}px`);
+        glow.dataset.visible = "true";
+      });
+    };
+
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseleave", hide);
+    window.addEventListener("blur", hide);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseleave", hide);
+      window.removeEventListener("blur", hide);
+    };
+  }, []);
+
+  return <div ref={glowRef} className="cursor-glow" aria-hidden="true" data-visible="false" />;
 }
