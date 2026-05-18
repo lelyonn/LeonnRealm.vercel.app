@@ -1,5 +1,5 @@
 import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
-import { blogPosts, categoryColors, otherSkills, projects, techSkills } from "../data/portfolio";
+import { blogPosts, categoryColors, otherSkills, projectCategoryColors, projects, techSkills } from "../data/portfolio";
 import { SharedFooter } from "../components/layout/SharedFooter";
 import { SkillMarquee } from "../components/skills/SkillMarquee";
 import { SkillPreview } from "../components/skills/SkillPreview";
@@ -133,6 +133,14 @@ export function HomePage({
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col gap-6 p-8 md:p-10">
+                  <div>
+                    <span
+                      className="rounded-full px-3 py-1 text-xs text-background"
+                      style={{ backgroundColor: projectCategoryColors[p.category] }}
+                    >
+                      {p.category}
+                    </span>
+                  </div>
                   <div className="flex items-start justify-between gap-4">
                     <h3
                       className="text-2xl tracking-tight md:text-3xl"

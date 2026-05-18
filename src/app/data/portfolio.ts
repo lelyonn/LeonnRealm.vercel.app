@@ -129,9 +129,14 @@ export const otherSkills: Skill[] = [
   },
 ];
 
+export const projectCategories = ["Cyber Security", "Web Development"] as const;
+
+export type ProjectCategory = (typeof projectCategories)[number];
+
 type Project = {
   n: string;
   title: string;
+  category: ProjectCategory;
   blurb: string;
   tags: string[];
   year: string;
@@ -141,10 +146,16 @@ type Project = {
   live: string | null;
 };
 
+export const projectCategoryColors: Record<ProjectCategory, string> = {
+  "Cyber Security": "#7692ff",
+  "Web Development": "#abd2fa",
+};
+
 export const projects: Project[] = [
  // {
   //  n: "01",
   //  title: "COMING SOON!",
+  //  category: "Cyber Security",
   //  blurb: "sABAR YAH",
   //  tags: ["BRB",],
    // year: "2025",
