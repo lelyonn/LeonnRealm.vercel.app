@@ -14,7 +14,7 @@ export default function App() {
   const { page, navigate } = useRoute();
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground" style={{ fontFamily: "var(--font-sans)" }}>
+    <div className="site-shell min-h-screen w-full text-foreground" style={{ fontFamily: "var(--font-sans)" }}>
       <Nav page={page} navigate={navigate} />
 
       <main key={page} className="page-transition">
@@ -70,8 +70,50 @@ export default function App() {
           }
         }
         .page-transition {
+          position: relative;
+          z-index: 1;
           animation: page-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
           will-change: opacity, transform, filter;
+        }
+        .site-shell {
+          position: relative;
+          isolation: isolate;
+          overflow-x: hidden;
+          background:
+            linear-gradient(180deg, rgba(2, 4, 11, 0.35), rgba(2, 4, 11, 0.74) 42%, rgba(2, 4, 11, 0.95)),
+            linear-gradient(115deg, transparent 0 32%, rgba(61, 81, 140, 0.12) 40%, transparent 52%),
+            radial-gradient(ellipse at 50% -10%, rgba(118, 146, 255, 0.26), transparent 46%),
+            radial-gradient(ellipse at 85% 18%, rgba(27, 44, 193, 0.22), transparent 38%);
+        }
+        .site-shell::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          z-index: -2;
+          pointer-events: none;
+          background:
+            linear-gradient(rgba(171, 210, 250, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(171, 210, 250, 0.035) 1px, transparent 1px);
+          background-size: 88px 88px;
+          mask-image: linear-gradient(to bottom, black 0 42%, transparent 82%);
+        }
+        .site-shell::after {
+          content: "";
+          position: fixed;
+          left: 50%;
+          top: -28rem;
+          z-index: -1;
+          width: min(96rem, 145vw);
+          height: 58rem;
+          pointer-events: none;
+          transform: translateX(-50%);
+          border: 1px solid rgba(171, 210, 250, 0.15);
+          border-bottom: 0;
+          border-radius: 0 0 50% 50%;
+          box-shadow:
+            0 0 120px rgba(118, 146, 255, 0.28),
+            inset 0 -42px 90px rgba(27, 44, 193, 0.26);
+          opacity: 0.82;
         }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }

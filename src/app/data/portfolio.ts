@@ -270,8 +270,8 @@ This is a public summary of the assessment. The full technical report is availab
 ];
 
 export const categoryColors: Record<BlogPost["category"], string> = {
-  "CTF Writeup": "#c8a96a",
+  "CTF Writeup": "#7692ff",
   "Bug Bounty": "#7fa67a",
   "Research": "#8a9fc8",
-  "General": "#8a8a87",
+  "General": "#91a6cc",
 };

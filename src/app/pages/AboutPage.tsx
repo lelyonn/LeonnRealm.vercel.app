@@ -21,7 +21,7 @@ export function AboutPage({
         <div
           aria-hidden
           className="pointer-events-none absolute left-[60%] top-[-80px] h-[500px] w-[700px] -translate-x-1/2 rounded-full opacity-30 blur-3xl"
-          style={{ background: "radial-gradient(closest-side, rgba(200,169,106,0.22), transparent)" }}
+          style={{ background: "radial-gradient(closest-side, rgba(118,146,255,0.30), transparent)" }}
         />
 
         <div className="mx-auto max-w-[1400px] px-6 pt-16 pb-20 md:px-12 md:pt-24 md:pb-28">
@@ -36,7 +36,7 @@ export function AboutPage({
           <div className="grid gap-16 md:grid-cols-[1fr_360px] md:gap-24 lg:grid-cols-[1fr_420px]">
             <div>
               <div className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#c8a96a]" />
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--portfolio-accent)]" />
                 About me
               </div>
 
@@ -45,7 +45,7 @@ export function AboutPage({
                 style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
               >
                 I make things{" "}
-                <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "#c8a96a" }}>
+                <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "var(--portfolio-accent)" }}>
                   careful
                 </span>
                 <br />and curious.
@@ -80,7 +80,7 @@ export function AboutPage({
                     key={text}
                     className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-muted-foreground"
                   >
-                    <Icon className="h-3.5 w-3.5 text-[#c8a96a]" strokeWidth={1.75} />
+                    <Icon className="h-3.5 w-3.5 text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                     {text}
                   </span>
                 ))}
@@ -101,14 +101,14 @@ export function AboutPage({
                   />
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full border border-[#c8a96a]/20 spin-slow"
+                    className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full border border-[rgba(118,146,255,0.24)] spin-slow"
                   />
                 </div>
 
                 <div className="mt-4 rounded-xl border border-border bg-card p-4 text-center">
                   <div
                     className="text-2xl tracking-tight"
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "#c8a96a" }}
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--portfolio-accent)" }}
                   >
                     UTC+7
                   </div>
@@ -160,14 +160,14 @@ export function AboutPage({
                   key={c.index}
                   className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:bg-card"
                 >
-                  <div className="h-px w-full bg-gradient-to-r from-[#c8a96a]/60 via-[#c8a96a]/20 to-transparent" />
+                  <div className="h-px w-full bg-gradient-to-r from-[rgba(118,146,255,0.65)] via-[rgba(118,146,255,0.22)] to-transparent" />
 
                   <div className="p-8 md:p-10">
                     <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                       <div className="flex-1">
                         <div className="mb-3 flex flex-wrap items-center gap-3">
                           <span
-                            className="text-xs uppercase tracking-[0.22em] text-[#c8a96a]"
+                            className="text-xs uppercase tracking-[0.22em] text-[var(--portfolio-accent)]"
                             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                           >
                             {c.organizer}
@@ -192,7 +192,7 @@ export function AboutPage({
                         <ul className="mt-5 space-y-2">
                           {c.highlights.map((h) => (
                             <li key={h} className="flex gap-3 text-sm leading-relaxed text-foreground/80">
-                              <span className="mt-2 inline-block h-1 w-3 flex-shrink-0 bg-[#c8a96a]" />
+                              <span className="mt-2 inline-block h-1 w-3 flex-shrink-0 bg-[var(--portfolio-accent)]" />
                               {h}
                             </li>
                           ))}
@@ -222,7 +222,7 @@ export function AboutPage({
                       </div>
 
                       <div
-                        className="flex-shrink-0 text-5xl tracking-tight text-border transition-colors group-hover:text-[#c8a96a]/20 md:text-6xl"
+                        className="flex-shrink-0 text-5xl tracking-tight text-border transition-colors group-hover:text-[rgba(118,146,255,0.22)] md:text-6xl"
                         style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
                       >
                         {c.index}
@@ -274,7 +274,7 @@ export function AboutPage({
                   className="group overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
                 >
                   <GitHubStatImage
-                    src="https://github-readme-stats.vercel.app/api?username=lelyonn&show_icons=true&hide_border=true&bg_color=0a0a0b&title_color=c8a96a&text_color=8a8a87&icon_color=c8a96a&ring_color=c8a96a&include_all_commits=true&count_private=true"
+                    src="https://github-readme-stats.vercel.app/api?username=lelyonn&show_icons=true&hide_border=true&bg_color=02040b&title_color=7692ff&text_color=91a6cc&icon_color=7692ff&ring_color=7692ff&include_all_commits=true&count_private=true"
                     alt="GitHub stats for lelyonn"
                     fallbackTitle="GitHub stats"
                     compact
@@ -287,7 +287,7 @@ export function AboutPage({
                   className="group overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
                 >
                   <GitHubStatImage
-                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=lelyonn&layout=compact&hide_border=true&bg_color=0a0a0b&title_color=c8a96a&text_color=8a8a87&langs_count=6"
+                    src="https://github-readme-stats.vercel.app/api/top-langs/?username=lelyonn&layout=compact&hide_border=true&bg_color=02040b&title_color=7692ff&text_color=91a6cc&langs_count=6"
                     alt="Top languages for lelyonn"
                     fallbackTitle="Top languages"
                     compact
@@ -303,7 +303,7 @@ export function AboutPage({
                 className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
               >
                 <GitHubStatImage
-                  src="https://streak-stats.demolab.com/?user=lelyonn&hide_border=true&background=0a0a0b&stroke=ffffff14&ring=c8a96a&fire=c8a96a&currStreakLabel=c8a96a&sideLabels=8a8a87&dates=8a8a87&sideNums=f5f5f4&currStreakNum=f5f5f4"
+                  src="https://streak-stats.demolab.com/?user=lelyonn&hide_border=true&background=02040b&stroke=ffffff14&ring=7692ff&fire=7692ff&currStreakLabel=7692ff&sideLabels=91a6cc&dates=91a6cc&sideNums=f5f5f4&currStreakNum=f5f5f4"
                   alt="GitHub streak for lelyonn"
                   fallbackTitle="Contribution streak"
                 />
@@ -317,7 +317,7 @@ export function AboutPage({
                 className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
               >
                 <GitHubStatImage
-                  src="https://github-readme-activity-graph.vercel.app/graph?username=lelyonn&bg_color=0a0a0b&color=8a8a87&line=c8a96a&point=c8a96a&area=true&area_color=c8a96a&hide_border=true&custom_title=Contribution+Activity"
+                  src="https://github-readme-activity-graph.vercel.app/graph?username=lelyonn&bg_color=02040b&color=91a6cc&line=7692ff&point=7692ff&area=true&area_color=7692ff&hide_border=true&custom_title=Contribution+Activity"
                   alt="GitHub contribution graph for lelyonn"
                   fallbackTitle="Contribution activity"
                 />
@@ -338,7 +338,7 @@ export function AboutPage({
               style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
             >
               Wanna talk? or just{" "}
-              <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "#c8a96a" }}>
+              <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "var(--portfolio-accent)" }}>
                 finding me around?
               </span>
             </h2>
@@ -358,10 +358,10 @@ export function AboutPage({
                   <span className="text-sm text-foreground/80" style={{ fontFamily: "var(--font-display)" }}>email</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-[#c8a96a] transition-colors group-hover:text-[#d4b97a]">
+                  <span className="text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)]">
                     leonardjhth091@gmail.com
                   </span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#c8a96a]" strokeWidth={1.75} />
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                 </div>
               </a>
 
@@ -380,10 +380,10 @@ export function AboutPage({
                   <span className="text-sm text-foreground/80" style={{ fontFamily: "var(--font-display)" }}>discord</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-[#c8a96a] transition-colors group-hover:text-[#d4b97a]">
+                  <span className="text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)]">
                     @velkyy.
                   </span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#c8a96a]" strokeWidth={1.75} />
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                 </div>
               </a>
 
@@ -400,8 +400,8 @@ export function AboutPage({
                   <span className="text-sm text-foreground/80" style={{ fontFamily: "var(--font-display)" }}>instagram</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-[#c8a96a] transition-colors group-hover:text-[#d4b97a]">@leonardjhthh</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#c8a96a]" strokeWidth={1.75} />
+                  <span className="text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)]">@leonardjhthh</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                 </div>
               </a>
 
@@ -418,8 +418,8 @@ export function AboutPage({
                   <span className="text-sm text-foreground/80" style={{ fontFamily: "var(--font-display)" }}>linkedin</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-[#c8a96a] transition-colors group-hover:text-[#d4b97a]">leonard-jonathan-s</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#c8a96a]" strokeWidth={1.75} />
+                  <span className="text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)]">leonard-jonathan-s</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                 </div>
               </a>
 
@@ -436,8 +436,8 @@ export function AboutPage({
                   <span className="text-sm text-foreground/80" style={{ fontFamily: "var(--font-display)" }}>github</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-[#c8a96a] transition-colors group-hover:text-[#d4b97a]">@lelyonn</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#c8a96a]" strokeWidth={1.75} />
+                  <span className="text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)]">@lelyonn</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                 </div>
               </a>
             </div>

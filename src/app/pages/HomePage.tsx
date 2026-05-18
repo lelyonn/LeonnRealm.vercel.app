@@ -21,12 +21,12 @@ export function HomePage({
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-[-120px] h-[480px] w-[900px] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
-          style={{ background: "radial-gradient(closest-side, rgba(200,169,106,0.18), transparent)" }}
+          style={{ background: "radial-gradient(closest-side, rgba(118,146,255,0.24), transparent)" }}
         />
 
         <div className="mx-auto max-w-[1400px] px-6 pt-20 pb-12 md:px-12 md:pt-28 md:pb-20">
           <div className="mb-10 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#c8a96a]" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--portfolio-accent)]" />
             Portfolio — 2026 / Surakarta, ID
           </div>
 
@@ -35,7 +35,7 @@ export function HomePage({
             style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
           >
             Leonard Jonathan{" "}
-            <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "#c8a96a" }}>
+            <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "var(--portfolio-accent)" }}>
               Saputra
             </span>
           </h1>
@@ -60,7 +60,7 @@ export function HomePage({
               </p>
               <p className="flex flex-wrap items-center gap-3 pt-2 text-sm">
                 <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-muted-foreground">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#c8a96a]" />
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--portfolio-accent)]" />
                   Tap any skill below to read more about that role
                 </span>
                 <button

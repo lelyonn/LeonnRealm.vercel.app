@@ -11,7 +11,7 @@ export function SharedFooter() {
               <span className="text-5xl tracking-tight md:text-6xl" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
                 Yon
               </span>
-              <span className="text-5xl leading-none md:text-6xl" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", color: "#c8a96a" }}>.</span>
+              <span className="text-5xl leading-none md:text-6xl" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", color: "var(--portfolio-accent)" }}>.</span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Currently open to internships, collaborations, and a good conversation about security or the web.
@@ -27,7 +27,7 @@ export function SharedFooter() {
                     href={l.href}
                     className="group inline-flex items-center gap-2 text-base text-foreground/85 hover:text-foreground"
                   >
-                    <span className="text-muted-foreground transition-colors group-hover:text-[#c8a96a]">→</span>
+                    <span className="text-muted-foreground transition-colors group-hover:text-[var(--portfolio-accent)]">→</span>
                     {l.label}
                   </a>
                 </li>

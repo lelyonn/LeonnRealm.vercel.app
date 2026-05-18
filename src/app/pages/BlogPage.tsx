@@ -23,7 +23,7 @@ export function BlogPage({ navigate }: { navigate: (to: Page) => void }) {
         <div
           aria-hidden
           className="pointer-events-none absolute right-0 top-[-60px] h-[400px] w-[600px] rounded-full opacity-25 blur-3xl"
-          style={{ background: "radial-gradient(closest-side, rgba(200,169,106,0.2), transparent)" }}
+          style={{ background: "radial-gradient(closest-side, rgba(118,146,255,0.28), transparent)" }}
         />
 
         <div className="mx-auto max-w-[1400px] px-6 pt-16 pb-20 md:px-12 md:pt-24 md:pb-28">
@@ -41,7 +41,7 @@ export function BlogPage({ navigate }: { navigate: (to: Page) => void }) {
             style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
           >
             Writeups &amp;{" "}
-            <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "#c8a96a" }}>
+            <span style={{ fontFamily: "var(--font-serif)", fontWeight: 400, fontStyle: "italic", color: "var(--portfolio-accent)" }}>
               thoughts.
             </span>
           </h1>

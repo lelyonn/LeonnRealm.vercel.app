@@ -22,7 +22,7 @@ export function SkillDialog({ skill, onClose }: { skill: Skill | null; onClose: 
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full opacity-50 blur-3xl"
-                style={{ background: "radial-gradient(closest-side, rgba(200,169,106,0.22), transparent)" }}
+                style={{ background: "radial-gradient(closest-side, rgba(118,146,255,0.30), transparent)" }}
               />
               <div className="relative flex items-start justify-between gap-4 border-b border-border px-7 py-6">
                 <div className="flex items-center gap-4">
@@ -36,7 +36,7 @@ export function SkillDialog({ skill, onClose }: { skill: Skill | null; onClose: 
                     >
                       {skill.label}
                     </Dialog.Title>
-                    <div className="text-sm text-[#c8a96a]" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
+                    <div className="text-sm text-[var(--portfolio-accent)]" style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>
                       {skill.role}
                     </div>
                   </div>
@@ -59,7 +59,7 @@ export function SkillDialog({ skill, onClose }: { skill: Skill | null; onClose: 
                   <ul className="space-y-2.5">
                     {skill.highlights.map((h) => (
                       <li key={h} className="flex gap-3 text-sm leading-relaxed text-foreground/85">
-                        <span className="mt-2 inline-block h-1 w-3 flex-shrink-0 bg-[#c8a96a]" />
+                        <span className="mt-2 inline-block h-1 w-3 flex-shrink-0 bg-[var(--portfolio-accent)]" />
                         {h}
                       </li>
                     ))}
