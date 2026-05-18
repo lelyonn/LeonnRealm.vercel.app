@@ -105,23 +105,14 @@ export function AboutPage({
                   />
                 </div>
 
-                <div className="mt-4 grid grid-cols-2 gap-3">
-                  {[
-                    { value: "4+", label: "Projects shipped" },
-                    { value: "3", label: "Skill domains" },
-                    { value: "CTF", label: "Active competitor" },
-                    { value: "UTC+7", label: "Surakarta, ID" },
-                  ].map(({ value, label }) => (
-                    <div key={label} className="rounded-xl border border-border bg-card p-4 text-center">
-                      <div
-                        className="text-2xl tracking-tight"
-                        style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "#c8a96a" }}
-                      >
-                        {value}
-                      </div>
-                      <div className="mt-1 text-xs text-muted-foreground">{label}</div>
-                    </div>
-                  ))}
+                <div className="mt-4 rounded-xl border border-border bg-card p-4 text-center">
+                  <div
+                    className="text-2xl tracking-tight"
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "#c8a96a" }}
+                  >
+                    UTC+7
+                  </div>
+                  <div className="mt-1 text-xs text-muted-foreground">Surakarta, ID</div>
                 </div>
               </div>
             </div>
