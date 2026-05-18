@@ -48,7 +48,7 @@ export function Nav({ page, navigate }: { page: Page; navigate: (to: Page) => vo
           onClick={goToConnect}
           className="group inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-sm transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-accent)] hover:text-background sm:px-4"
         >
-          Let&apos;s talk
+          Contact me
           <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </button>
       </div>
