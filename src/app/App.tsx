@@ -17,15 +17,17 @@ export default function App() {
     <div className="min-h-screen w-full bg-background text-foreground" style={{ fontFamily: "var(--font-sans)" }}>
       <Nav page={page} navigate={navigate} />
 
-      {page === "about" ? (
-        <AboutPage onSkillSelect={setActive} onSkillHover={setHovered} hoveredSkill={hovered} navigate={navigate} />
-      ) : page === "projects" ? (
-        <ProjectsPage navigate={navigate} />
-      ) : page === "blog" ? (
-        <BlogPage navigate={navigate} />
-      ) : (
-        <HomePage onSkillSelect={setActive} onSkillHover={setHovered} hoveredSkill={hovered} navigate={navigate} />
-      )}
+      <main key={page} className="page-transition">
+        {page === "about" ? (
+          <AboutPage onSkillSelect={setActive} onSkillHover={setHovered} hoveredSkill={hovered} navigate={navigate} />
+        ) : page === "projects" ? (
+          <ProjectsPage navigate={navigate} />
+        ) : page === "blog" ? (
+          <BlogPage navigate={navigate} />
+        ) : (
+          <HomePage onSkillSelect={setActive} onSkillHover={setHovered} hoveredSkill={hovered} navigate={navigate} />
+        )}
+      </main>
 
       <SkillDialog skill={active} onClose={() => setActive(null)} />
 
@@ -55,11 +57,33 @@ export default function App() {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        @keyframes page-in {
+          from {
+            opacity: 0;
+            transform: translateY(14px);
+            filter: blur(6px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+          }
+        }
+        .page-transition {
+          animation: page-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          will-change: opacity, transform, filter;
+        }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
         }
         .spin-slow { animation: spin-slow 12s linear infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .page-transition {
+            animation: none;
+            will-change: auto;
+          }
+        }
       `}</style>
     </div>
   );
