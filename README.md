@@ -1,4 +1,4 @@
-# Leonard Jonathan Saputra Portfolio
+# Leonard Jonathan Saputra Portfolio Website
 
 ![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=111)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=fff)
