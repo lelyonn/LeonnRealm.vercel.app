@@ -14,6 +14,7 @@ export function HomePage({
   navigate: (to: Page) => void;
 }) {
   const featuredPost = blogPosts[0];
+  const primaryRoles = techSkills.filter((skill) => skill.label !== "Web Development");
 
   return (
     <>
@@ -77,7 +78,7 @@ export function HomePage({
 
         <SkillMarquee
           eyebrow="Engineering & Security"
-          skills={techSkills}
+          skills={primaryRoles}
           direction="left"
           emphasis
           speed={40}
