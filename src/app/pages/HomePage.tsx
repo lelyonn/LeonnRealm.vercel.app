@@ -50,14 +50,22 @@ export function HomePage({
             <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">(01) About</div>
             <div className="max-w-3xl space-y-5 text-base leading-relaxed text-foreground/85 md:text-lg">
               <p>
-                I&apos;m a vocational informatics student based in Indonesia, currently sharpening my craft at the intersection
-                of <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>offensive security</span> and
-                modern web engineering. I like understanding how systems break — and then designing the ones that hold.
+                Hi, I&apos;m Leonard Jonathan Saputra, an Informatics Engineering student at Universitas Sebelas Maret
+                specializing in Cyber Security. I&apos;m focused on offensive security, web penetration testing, Linux
+                environments, and network analysis, with a strong interest in understanding how systems break so I can
+                help make them stronger.
               </p>
               <p>
-                Away from the terminal you&apos;ll find me on a stage rather than behind one: I speak in front of student
-                communities, play guitar in small ensembles, and occasionally write about the strange edges of the web.
-                I&apos;m looking for collaborators who care about details and ship anyway.
+                Through security projects and challenges such as the Cyber Academy PT Vulnapp Penetration Testing
+                Challenge, I&apos;ve practiced vulnerability discovery, exploitation, risk assessment, and professional
+                report writing. Alongside cyber security, I also build web applications, which helps me understand
+                digital systems from both the attacker&apos;s and developer&apos;s perspective.
+              </p>
+              <p>
+                I&apos;m dedicated, curious, and results-oriented. Beyond technical work, my experience in public speaking,
+                music performance, and event media has shaped how I communicate, collaborate, and lead. My goal is to
+                keep growing as a security professional who can analyze complex systems, explain risks clearly, and
+                contribute to protecting digital infrastructure.
               </p>
               <p className="flex flex-wrap items-center gap-3 pt-2 text-sm">
                 <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-muted-foreground">

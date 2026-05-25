@@ -53,20 +53,22 @@ export function AboutPage({
 
               <div className="mt-10 space-y-5 text-base leading-[1.75] text-foreground/80 md:text-lg">
                 <p>
-                  My name is Leonard Jonathan Saputra — most people call me{" "}
-                  <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}>Yon</span>. I&apos;m a vocational
-                  informatics student from Surakarta, Indonesia, studying at the intersection of offensive security
-                  and modern web engineering.
+                  Hi, I&apos;m Leonard Jonathan Saputra, an Informatics Engineering student at Universitas Sebelas Maret
+                  specializing in Cyber Security. I&apos;m focused on offensive security, web penetration testing, Linux
+                  environments, and network analysis, with a strong interest in understanding how systems break so I can
+                  help make them stronger.
                 </p>
                 <p>
-                  I got into security the way most people do: I broke something I wasn&apos;t supposed to, and instead of
-                  panicking I got curious. Since then I&apos;ve been methodically learning how systems fail — so I can help
-                  them fail less, or help the right people understand when they&apos;ve been failed.
+                  Through security projects and challenges such as the Cyber Academy PT Vulnapp Penetration Testing
+                  Challenge, I&apos;ve practiced vulnerability discovery, exploitation, risk assessment, and professional
+                  report writing. Alongside cyber security, I also build web applications, which helps me understand
+                  digital systems from both the attacker&apos;s and developer&apos;s perspective.
                 </p>
                 <p>
-                  Outside of a screen I&apos;m a guitarist, an MC, a church speaker, and occasional video editor. These
-                  aren&apos;t side interests — they&apos;re the same practice of showing up prepared, reading a room, and
-                  making something feel considered.
+                  I&apos;m dedicated, curious, and results-oriented. Beyond technical work, my experience in public speaking,
+                  music performance, and event media has shaped how I communicate, collaborate, and lead. My goal is to
+                  keep growing as a security professional who can analyze complex systems, explain risks clearly, and
+                  contribute to protecting digital infrastructure.
                 </p>
               </div>
 
