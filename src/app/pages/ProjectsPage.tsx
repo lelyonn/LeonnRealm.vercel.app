@@ -117,7 +117,7 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
                           onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                         >
-                          <Github className="h-3.5 w-3.5" strokeWidth={1.75} /> GitHub
+                          <Github className="h-3.5 w-3.5" strokeWidth={1.75} /> VIEW GITHUB REPOSITORY
                         </a>
                       )}
                       {p.live && (
