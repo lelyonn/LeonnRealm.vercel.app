@@ -10,6 +10,7 @@ import {
   Terminal,
 } from "lucide-react";
 import pentestReportPdf from "@/imports/Pentest_Report_PTVulnapp_LeonardJonathanSaputra.pdf";
+import honeypotPreview from "@/imports/GambarHoneyPot.png";
 import type { Skill } from "../types";
 
 export const techSkills: Skill[] = [
@@ -160,8 +161,8 @@ export const projects: Project[] = [
       "A lightweight Node.js honeypot that captures suspicious login attempts, classifies attacker behavior, builds actor fingerprints, groups attack sessions, enriches IP metadata, and generates incident reports.",
     tags: ["Cybersecurity", "Honeypot", "Threat Intelligence", "Deception", "Incident Response"],
     year: "2026",
-    image: "https://opengraph.githubassets.com/1/lelyonn/fake-admin-login-honeypot",
-    credit: "GitHub repository preview",
+    image: honeypotPreview,
+    credit: "Project preview",
     github: "https://github.com/lelyonn/fake-admin-login-honeypot",
     live: null,
   },
