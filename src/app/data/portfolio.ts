@@ -166,6 +166,19 @@ export const projects: Project[] = [
     github: "https://github.com/lelyonn/fake-admin-login-honeypot",
     live: null,
   },
+  {
+    n: "02",
+    title: "Church Profile Website",
+    category: "Web Development",
+    blurb:
+      "A church profile website built to present church identity, worship information, ministries, and contact access through a clean responsive public-facing web experience.",
+    tags: ["Web Development", "Church Profile", "Responsive Design", "Vercel", "Frontend"],
+    year: "2026",
+    image: "https://opengraph.githubassets.com/1/lelyonn/ChurchWebsite",
+    credit: "GitHub repository preview",
+    github: "https://github.com/lelyonn/ChurchWebsite",
+    live: "https://church-website-snowy-zeta.vercel.app/",
+  },
 ];
 
 export const footerLinks = [
