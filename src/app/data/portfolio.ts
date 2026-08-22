@@ -11,9 +11,9 @@ import {
 } from "lucide-react";
 import pentestReportPdf from "@/imports/Pentest_Report_PTVulnapp_LeonardJonathanSaputra.pdf";
 import honeypotPreview from "@/imports/GambarHoneyPot.png";
-import awsCloudFoundationsPdf from "@/imports/certificates/aws-cloud-foundations.pdf";
+import awsCloudFoundationsjpg from "@/imports/certificates/cloudfoundations.jpg";
 import ccnaIntroductionPdf from "@/imports/certificates/ccna-introduction-to-networks.pdf";
-import databaseDesignPdf from "@/imports/certificates/database-design-english.pdf";
+import databaseDesignJPG from "@/imports/certificates/database-design-english.jpg";
 import researchParticipationPng from "@/imports/certificates/vr-research-participation.png";
 import sololearnCertificatePdf from "@/imports/certificates/certificate-leonard-saputra.pdf";
 import type { Skill } from "../types";
@@ -235,8 +235,8 @@ export const certificates: Certificate[] = [
       "Completed AWS Academy Cloud Foundations training, covering cloud concepts, AWS core services, security, architecture, pricing, and support fundamentals.",
     tags: ["Cloud Computing", "AWS", "Foundations"],
     credential: "Graduate training badge",
-    mediaHref: awsCloudFoundationsPdf,
-    mediaType: "pdf",
+    mediaHref: awsCloudFoundationsJPG,
+    mediaType: "image",
   },
   {
     index: "02",
@@ -247,8 +247,8 @@ export const certificates: Certificate[] = [
       "Earned an English award of completion for Database Design, strengthening relational modeling, entity relationships, normalization, and schema planning.",
     tags: ["Database", "Data Modeling", "SQL"],
     credential: "Award of completion",
-    mediaHref: databaseDesignPdf,
-    mediaType: "pdf",
+    mediaHref: databaseDesignJPG,
+    mediaType: "image",
   },
   {
     index: "03",
