@@ -25,6 +25,8 @@ export function SharedFooter() {
                 <li key={l.label}>
                   <a
                     href={l.href}
+                    target={l.href.startsWith("mailto:") || l.href.startsWith("http") ? "_blank" : undefined}
+                    rel={l.href.startsWith("mailto:") || l.href.startsWith("http") ? "noreferrer" : undefined}
                     className="group inline-flex items-center gap-2 text-base text-foreground/85 hover:text-foreground"
                   >
                     <span className="text-muted-foreground transition-colors group-hover:text-[var(--portfolio-accent)]">→</span>

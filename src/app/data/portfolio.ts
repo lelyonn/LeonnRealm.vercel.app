@@ -37,7 +37,7 @@ export const techSkills: Skill[] = [
       { label: "Capture the Flag", icon: Flag },
       { label: "Bug Bounty", icon: Bug },
     ],
-    tools: ["Burp Suite", "Wireshark", "Nmap", "ParrotOS", "TryHackMe", "HTB"],
+    tools: ["Burp Suite", "Wireshark", "Kali Linux",],
     links: [
       {
         label: "See my full project here",
@@ -113,26 +113,6 @@ export const otherSkills: Skill[] = [
     tools: [
       "Acoustic Guitar", "Electric Guitar", "Basic Piano", "Basic Cajon",
       "Live Performance", "Team Collaboration", "Worship Music", "Event Music",
-    ],
-  },
-  {
-    label: "Video Editing",
-    icon: Clapperboard,
-    role: "PDD Coordinator, Editor & Concept Maker",
-    summary:
-      "I have experience as PDD (Publikasi, Dokumentasi, Dekorasi) for various campus events — leading the visual side from concept to final cut. I enjoy the part where pacing, typography, and sound design start to feel like one decision.",
-    highlights: [
-      "Coordinator of the PDD division for the campus Christmas event — produced teasers, edited short films, and built animated lyric/text sequences.",
-      "Editor and concept maker for the PDD division of the campus Easter event.",
-      "Comfortable owning a video from rough concept and storyboard through to color, motion text, and final delivery.",
-    ],
-    tools: ["After Effects", "Adobe Premiere", "CapCut"],
-    links: [
-      {
-        label: "Watch Event Documentation",
-        href: "https://drive.google.com/file/d/1yyPnyfp4ONpqAeJDky0uCTrrfn1_mG4X/view?usp=sharing",
-        note: "Campus Easter event video documentation.",
-      },
     ],
   },
 ];
@@ -256,7 +236,7 @@ export const certificates: Certificate[] = [
     index: "03",
     title: "IT Essentials",
     issuer: "Cisco Networking Academy",
-    year: "2026",
+    year: "2025",
     description:
       "Completed foundational IT training covering computer hardware, operating systems, networking basics, security, troubleshooting, and technical support workflows.",
     tags: ["IT Support", "Hardware", "Troubleshooting"],
@@ -292,7 +272,7 @@ export const certificates: Certificate[] = [
     index: "06",
     title: "Red Hat System Administration",
     issuer: "Red Hat Academy",
-    year: "2026",
+    year: "2025",
     description:
       "Completed Linux system administration training focused on command-line workflows, users and permissions, file systems, services, and essential server operations.",
     tags: ["Linux", "Red Hat", "System Administration"],
@@ -302,9 +282,9 @@ export const certificates: Certificate[] = [
   },
   {
     index: "07",
-    title: "Sistem Operasi",
+    title: "Operation System Basic Course",
     issuer: "Universitas Sebelas Maret",
-    year: "2026",
+    year: "2025",
     description:
       "Completed operating systems coursework covering process management, memory, file systems, scheduling, and core concepts behind modern computer systems.",
     tags: ["Operating Systems", "Computer Science", "Systems"],
