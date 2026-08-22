@@ -11,11 +11,11 @@ import {
 } from "lucide-react";
 import pentestReportPdf from "@/imports/Pentest_Report_PTVulnapp_LeonardJonathanSaputra.pdf";
 import honeypotPreview from "@/imports/GambarHoneyPot.png";
-import awsCloudFoundationsjpg from "@/imports/certificates/cloudfoundations.jpg";
-import ccnaIntroductionPdf from "@/imports/certificates/ccna-introduction-to-networks.pdf";
+import awsCloudFoundationsJpg from "@/imports/certificates/cloudfoundations.jpg";
+import ccnaIntroductionJpg from "@/imports/certificates/CCNA.jpg";
 import databaseDesignJPG from "@/imports/certificates/database-design-english.jpg";
+import itEssentialsJpg from "@/imports/certificates/ITessen.jpg";
 import researchParticipationPng from "@/imports/certificates/vr-research-participation.png";
-import sololearnCertificatePdf from "@/imports/certificates/certificate-leonard-saputra.pdf";
 import type { Skill } from "../types";
 
 export const techSkills: Skill[] = [
@@ -235,7 +235,7 @@ export const certificates: Certificate[] = [
       "Completed AWS Academy Cloud Foundations training, covering cloud concepts, AWS core services, security, architecture, pricing, and support fundamentals.",
     tags: ["Cloud Computing", "AWS", "Foundations"],
     credential: "Graduate training badge",
-    mediaHref: awsCloudFoundationsJPG,
+    mediaHref: awsCloudFoundationsJpg,
     mediaType: "image",
   },
   {
@@ -252,15 +252,15 @@ export const certificates: Certificate[] = [
   },
   {
     index: "03",
-    title: "Responsive Web Design",
-    issuer: "freeCodeCamp",
+    title: "IT Essentials",
+    issuer: "Cisco Networking Academy",
     year: "2026",
     description:
-      "Completed a web design certification focused on semantic HTML, responsive CSS, accessibility, layout systems, and practical frontend project work.",
-    tags: ["HTML", "CSS", "Responsive UI"],
-    credential: "Developer certification",
-    mediaHref: sololearnCertificatePdf,
-    mediaType: "pdf",
+      "Completed foundational IT training covering computer hardware, operating systems, networking basics, security, troubleshooting, and technical support workflows.",
+    tags: ["IT Support", "Hardware", "Troubleshooting"],
+    credential: "Course certificate",
+    mediaHref: itEssentialsJpg,
+    mediaType: "image",
   },
   {
     index: "04",
@@ -271,8 +271,8 @@ export const certificates: Certificate[] = [
       "Completed Cisco's introductory networking course covering network models, Ethernet, IP addressing, switching, routing basics, and connectivity troubleshooting.",
     tags: ["Networking", "Cisco", "CCNA"],
     credential: "Course certificate",
-    mediaHref: ccnaIntroductionPdf,
-    mediaType: "pdf",
+    mediaHref: ccnaIntroductionJpg,
+    mediaType: "image",
   },
   {
     index: "05",
