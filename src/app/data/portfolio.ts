@@ -11,6 +11,11 @@ import {
 } from "lucide-react";
 import pentestReportPdf from "@/imports/Pentest_Report_PTVulnapp_LeonardJonathanSaputra.pdf";
 import honeypotPreview from "@/imports/GambarHoneyPot.png";
+import awsCloudFoundationsPdf from "@/imports/certificates/aws-cloud-foundations.pdf";
+import ccnaIntroductionPdf from "@/imports/certificates/ccna-introduction-to-networks.pdf";
+import databaseDesignPdf from "@/imports/certificates/database-design-english.pdf";
+import researchParticipationPng from "@/imports/certificates/vr-research-participation.png";
+import sololearnCertificatePdf from "@/imports/certificates/certificate-leonard-saputra.pdf";
 import type { Skill } from "../types";
 
 export const techSkills: Skill[] = [
@@ -215,27 +220,71 @@ export type Certificate = {
   year: string;
   description: string;
   tags: string[];
-  proofHref?: string;
+  credential: string;
+  mediaHref: string;
+  mediaType: "pdf" | "image";
 };
 
 export const certificates: Certificate[] = [
   {
     index: "01",
-    title: "Chinese for HSK 1",
-    issuer: "Peking University",
-    year: "2025",
+    title: "AWS Academy Cloud Foundations",
+    issuer: "AWS Academy",
+    year: "2026",
     description:
-      "Completed an introductory Chinese language course focused on HSK 1 fundamentals, basic vocabulary, pronunciation, and beginner-level communication.",
-    tags: ["Chinese", "HSK 1", "Language"],
+      "Completed AWS Academy Cloud Foundations training, covering cloud concepts, AWS core services, security, architecture, pricing, and support fundamentals.",
+    tags: ["Cloud Computing", "AWS", "Foundations"],
+    credential: "Graduate training badge",
+    mediaHref: awsCloudFoundationsPdf,
+    mediaType: "pdf",
   },
   {
     index: "02",
-    title: "SHINE Online Future Festival",
-    issuer: "BINUS Online",
+    title: "Database Design",
+    issuer: "Oracle Academy",
     year: "2026",
     description:
-      "Participated in an online future-focused program covering learning, digital career readiness, and personal development themes.",
-    tags: ["Future Career", "Online Program", "Learning"],
+      "Earned an English award of completion for Database Design, strengthening relational modeling, entity relationships, normalization, and schema planning.",
+    tags: ["Database", "Data Modeling", "SQL"],
+    credential: "Award of completion",
+    mediaHref: databaseDesignPdf,
+    mediaType: "pdf",
+  },
+  {
+    index: "03",
+    title: "Responsive Web Design",
+    issuer: "freeCodeCamp",
+    year: "2026",
+    description:
+      "Completed a web design certification focused on semantic HTML, responsive CSS, accessibility, layout systems, and practical frontend project work.",
+    tags: ["HTML", "CSS", "Responsive UI"],
+    credential: "Developer certification",
+    mediaHref: sololearnCertificatePdf,
+    mediaType: "pdf",
+  },
+  {
+    index: "04",
+    title: "CCNA: Introduction to Networks",
+    issuer: "Cisco Networking Academy",
+    year: "2026",
+    description:
+      "Completed Cisco's introductory networking course covering network models, Ethernet, IP addressing, switching, routing basics, and connectivity troubleshooting.",
+    tags: ["Networking", "Cisco", "CCNA"],
+    credential: "Course certificate",
+    mediaHref: ccnaIntroductionPdf,
+    mediaType: "pdf",
+  },
+  {
+    index: "05",
+    title: "Virtual Reality Multi User Research",
+    issuer: "Universitas Sebelas Maret",
+    year: "2026",
+    description:
+      "Recognized as a research participant for a study analyzing user comfort in multi-user virtual reality classes using EEG signals and deep learning algorithms.",
+    tags: ["Research", "Virtual Reality", "EEG"],
+    credential: "Certificate of participation",
+    mediaHref: researchParticipationPng,
+    mediaType: "image",
   },
 ];
 

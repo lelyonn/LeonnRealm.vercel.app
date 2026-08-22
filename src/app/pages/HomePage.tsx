@@ -1,4 +1,5 @@
-import { ArrowUpRight, Award, ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, Award, ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import {
   blogPosts,
   categoryColors,
@@ -23,6 +24,12 @@ export function HomePage({
 }) {
   const featuredPost = blogPosts[0];
   const primaryRoles = techSkills.filter((skill) => skill.label !== "Web Development");
+  const [activeCertificateIndex, setActiveCertificateIndex] = useState(0);
+  const activeCertificate = certificates[activeCertificateIndex];
+  const visibleCertificates = [1, 2].map((offset) => certificates[(activeCertificateIndex + offset) % certificates.length]);
+  const goToCertificate = (direction: 1 | -1) => {
+    setActiveCertificateIndex((current) => (current + direction + certificates.length) % certificates.length);
+  };
 
   return (
     <>
@@ -212,71 +219,116 @@ export function HomePage({
         </div>
       </section>
 
-      <section id="certification" className="border-t border-border">
-        <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
-          <div className="mb-14 flex items-end justify-between gap-6">
-            <div>
-              <div className="mb-4 text-xs uppercase tracking-[0.22em] text-muted-foreground">(03) Certification</div>
-              <h2
-                className="text-balance text-3xl tracking-[-0.02em] md:text-5xl"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+      <section id="certification" className="relative overflow-hidden border-t border-border">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_50%_50%,rgba(118,146,255,0.18),transparent_54%)]"
+        />
+        <div className="mx-auto grid min-h-[720px] max-w-[1400px] items-center gap-14 px-6 py-20 md:px-12 md:py-28 lg:grid-cols-[0.82fr_1.18fr]">
+          <div className="relative z-10">
+            <div className="mb-8 text-xs uppercase tracking-[0.32em] text-muted-foreground">// Certificates</div>
+            <div className="mb-4 text-sm uppercase tracking-[0.28em] text-[var(--portfolio-accent)]">
+              {activeCertificate.issuer} - {activeCertificate.year}
+            </div>
+            <h2
+              className="max-w-3xl text-balance text-[48px] leading-[0.96] tracking-[-0.03em] md:text-[78px] lg:text-[92px]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+            >
+              {activeCertificate.title}
+            </h2>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/82 md:text-xl">
+              {activeCertificate.description}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {activeCertificate.tags.map((tag) => (
+                <span key={tag} className="rounded-full border border-border bg-card/70 px-4 py-1.5 text-sm text-foreground/90">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a
+                href={activeCertificate.mediaHref}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-3 rounded-2xl bg-[var(--portfolio-accent)] px-7 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-background shadow-[0_0_36px_rgba(118,146,255,0.28)] transition-transform hover:-translate-y-0.5"
               >
-                Proofs of{" "}
-                <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}>learning.</span>
-              </h2>
+                View certificate
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-4 py-2 text-sm text-muted-foreground">
+                <Award className="h-4 w-4 text-[var(--portfolio-accent)]" strokeWidth={1.75} />
+                {activeCertificate.credential}
+              </span>
             </div>
           </div>
 
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
-            {certificates.map((certificate) => (
-              <article key={certificate.index} className="group flex flex-col bg-background p-8 transition-colors hover:bg-card md:p-10">
-                <div className="mb-8 flex items-start justify-between gap-6">
-                  <div>
-                    <div className="mb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                      {certificate.issuer} — {certificate.year}
-                    </div>
-                    <h3
-                      className="text-2xl tracking-tight md:text-3xl"
-                      style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-                    >
-                      {certificate.title}
-                    </h3>
-                  </div>
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-border bg-card text-[var(--portfolio-accent)]">
-                    <Award className="h-5 w-5" strokeWidth={1.75} />
-                  </div>
-                </div>
+          <div className="relative min-h-[440px] lg:min-h-[520px]">
+            <div className="absolute inset-y-8 left-[18%] right-[-18%] hidden md:block">
+              {visibleCertificates.map((certificate, offset) => (
+                <button
+                  key={certificate.index}
+                  onClick={() => setActiveCertificateIndex(certificates.findIndex((item) => item.index === certificate.index))}
+                  className="absolute top-1/2 h-[270px] w-[410px] -translate-y-1/2 overflow-hidden rounded-[18px] border border-foreground/20 bg-white opacity-45 shadow-2xl blur-[1px] transition hover:opacity-70"
+                  style={{
+                    left: `${offset * 230 + 210}px`,
+                    transform: `translateY(-50%) scale(${0.88 - offset * 0.08})`,
+                    zIndex: 4 - offset,
+                  }}
+                  aria-label={`Show ${certificate.title}`}
+                >
+                  <CertificateMedia certificate={certificate} compact />
+                </button>
+              ))}
+            </div>
 
-                <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {certificate.description}
-                </p>
-
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {certificate.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-border px-3 py-1 text-xs text-foreground/80">
-                      {tag}
-                    </span>
-                  ))}
+            <div className="relative z-10 mx-auto flex max-w-[640px] flex-col">
+              <div className="overflow-hidden rounded-[22px] border-[10px] border-foreground/90 bg-white shadow-[0_34px_90px_rgba(0,0,0,0.44)]">
+                <div className="aspect-[1.42/1] bg-white">
+                  <CertificateMedia certificate={activeCertificate} />
                 </div>
+              </div>
+              <div className="-mt-14 ml-5 max-w-[78%] rounded-md border border-border bg-background/88 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--portfolio-accent)] backdrop-blur">
+                {activeCertificate.issuer} - {activeCertificate.year}
+              </div>
+            </div>
 
-                <div className="mt-auto flex items-center justify-between gap-4 pt-10">
-                  <span className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                    Certificate {certificate.index}
-                  </span>
-                  {certificate.proofHref && (
-                    <a
-                      href={certificate.proofHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
-                    >
-                      View certificate
-                      <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
+            <div className="mt-16 flex items-center justify-center gap-5">
+              <button
+                onClick={() => goToCertificate(-1)}
+                className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-foreground"
+                aria-label="Previous certificate"
+              >
+                <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
+              </button>
+              <div className="flex items-center gap-3">
+                {certificates.map((certificate, index) => (
+                  <button
+                    key={certificate.index}
+                    onClick={() => setActiveCertificateIndex(index)}
+                    className={
+                      "h-2.5 rounded-full transition-all " +
+                      (index === activeCertificateIndex
+                        ? "w-9 bg-[var(--portfolio-accent)]"
+                        : "w-2.5 bg-muted-foreground/45 hover:bg-foreground")
+                    }
+                    aria-label={`Show certificate ${certificate.index}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => goToCertificate(1)}
+                className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-foreground"
+                aria-label="Next certificate"
+              >
+                <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
+              </button>
+              <div className="ml-2 text-sm font-semibold uppercase tracking-[0.24em]">
+                <span className="text-[var(--portfolio-accent)]">{activeCertificate.index}</span>
+                <span className="mx-3 text-muted-foreground">/</span>
+                <span className="text-muted-foreground">{String(certificates.length).padStart(2, "0")}</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -381,5 +433,37 @@ export function HomePage({
 
       <SharedFooter />
     </>
+  );
+}
+
+function CertificateMedia({
+  certificate,
+  compact = false,
+}: {
+  certificate: (typeof certificates)[number];
+  compact?: boolean;
+}) {
+  if (certificate.mediaType === "image") {
+    return (
+      <img
+        src={certificate.mediaHref}
+        alt={`${certificate.title} certificate`}
+        className="h-full w-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+
+  return (
+    <object
+      data={`${certificate.mediaHref}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+      type="application/pdf"
+      aria-label={`${certificate.title} certificate preview`}
+      className={"h-full w-full bg-white " + (compact ? "pointer-events-none" : "")}
+    >
+      <div className="flex h-full w-full items-center justify-center bg-white p-8 text-center text-sm text-slate-700">
+        {certificate.title}
+      </div>
+    </object>
   );
 }
