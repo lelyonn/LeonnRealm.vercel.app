@@ -1,5 +1,13 @@
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
-import { blogPosts, categoryColors, otherSkills, projectCategoryColors, projects, techSkills } from "../data/portfolio";
+import { ArrowUpRight, Award, ExternalLink, Github } from "lucide-react";
+import {
+  blogPosts,
+  categoryColors,
+  certificates,
+  otherSkills,
+  projectCategoryColors,
+  projects,
+  techSkills,
+} from "../data/portfolio";
 import { SharedFooter } from "../components/layout/SharedFooter";
 import { SkillMarquee } from "../components/skills/SkillMarquee";
 import { SkillPreview } from "../components/skills/SkillPreview";
@@ -204,11 +212,80 @@ export function HomePage({
         </div>
       </section>
 
+      <section id="certification" className="border-t border-border">
+        <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
+          <div className="mb-14 flex items-end justify-between gap-6">
+            <div>
+              <div className="mb-4 text-xs uppercase tracking-[0.22em] text-muted-foreground">(03) Certification</div>
+              <h2
+                className="text-balance text-3xl tracking-[-0.02em] md:text-5xl"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                Proofs of{" "}
+                <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}>learning.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+            {certificates.map((certificate) => (
+              <article key={certificate.index} className="group flex flex-col bg-background p-8 transition-colors hover:bg-card md:p-10">
+                <div className="mb-8 flex items-start justify-between gap-6">
+                  <div>
+                    <div className="mb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                      {certificate.issuer} — {certificate.year}
+                    </div>
+                    <h3
+                      className="text-2xl tracking-tight md:text-3xl"
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+                    >
+                      {certificate.title}
+                    </h3>
+                  </div>
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-border bg-card text-[var(--portfolio-accent)]">
+                    <Award className="h-5 w-5" strokeWidth={1.75} />
+                  </div>
+                </div>
+
+                <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {certificate.description}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {certificate.tags.map((tag) => (
+                    <span key={tag} className="rounded-full border border-border px-3 py-1 text-xs text-foreground/80">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex items-center justify-between gap-4 pt-10">
+                  <span className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                    Certificate {certificate.index}
+                  </span>
+                  {certificate.proofHref && (
+                    <a
+                      href={certificate.proofHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+                    >
+                      View certificate
+                      <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-t border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-12 flex items-end justify-between gap-6">
             <div>
-              <div className="mb-4 text-xs uppercase tracking-[0.22em] text-muted-foreground">(03) Writing</div>
+              <div className="mb-4 text-xs uppercase tracking-[0.22em] text-muted-foreground">(04) Writing</div>
               <h2
                 className="text-balance text-3xl tracking-[-0.02em] md:text-5xl"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}

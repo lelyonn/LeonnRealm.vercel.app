@@ -208,6 +208,37 @@ export const competitions = [
   },
 ];
 
+export type Certificate = {
+  index: string;
+  title: string;
+  issuer: string;
+  year: string;
+  description: string;
+  tags: string[];
+  proofHref?: string;
+};
+
+export const certificates: Certificate[] = [
+  {
+    index: "01",
+    title: "Chinese for HSK 1",
+    issuer: "Peking University",
+    year: "2025",
+    description:
+      "Completed an introductory Chinese language course focused on HSK 1 fundamentals, basic vocabulary, pronunciation, and beginner-level communication.",
+    tags: ["Chinese", "HSK 1", "Language"],
+  },
+  {
+    index: "02",
+    title: "SHINE Online Future Festival",
+    issuer: "BINUS Online",
+    year: "2026",
+    description:
+      "Participated in an online future-focused program covering learning, digital career readiness, and personal development themes.",
+    tags: ["Future Career", "Online Program", "Learning"],
+  },
+];
+
 export type BlogPost = {
   slug: string;
   title: string;
