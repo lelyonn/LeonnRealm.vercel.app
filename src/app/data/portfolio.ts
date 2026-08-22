@@ -15,7 +15,9 @@ import awsCloudFoundationsJpg from "@/imports/certificates/cloudfoundations.jpg"
 import ccnaIntroductionJpg from "@/imports/certificates/CCNA.jpg";
 import databaseDesignJPG from "@/imports/certificates/database-design-english.jpg";
 import itEssentialsJpg from "@/imports/certificates/ITessen.jpg";
+import redHatJpg from "@/imports/certificates/redhat.jpg";
 import researchParticipationPng from "@/imports/certificates/vr-research-participation.png";
+import operatingSystemJpg from "@/imports/certificates/Sistemoperasi.jpg";
 import type { Skill } from "../types";
 
 export const techSkills: Skill[] = [
@@ -284,6 +286,30 @@ export const certificates: Certificate[] = [
     tags: ["Research", "Virtual Reality", "EEG"],
     credential: "Certificate of participation",
     mediaHref: researchParticipationPng,
+    mediaType: "image",
+  },
+  {
+    index: "06",
+    title: "Red Hat System Administration",
+    issuer: "Red Hat Academy",
+    year: "2026",
+    description:
+      "Completed Linux system administration training focused on command-line workflows, users and permissions, file systems, services, and essential server operations.",
+    tags: ["Linux", "Red Hat", "System Administration"],
+    credential: "Course certificate",
+    mediaHref: redHatJpg,
+    mediaType: "image",
+  },
+  {
+    index: "07",
+    title: "Sistem Operasi",
+    issuer: "Universitas Sebelas Maret",
+    year: "2026",
+    description:
+      "Completed operating systems coursework covering process management, memory, file systems, scheduling, and core concepts behind modern computer systems.",
+    tags: ["Operating Systems", "Computer Science", "Systems"],
+    credential: "Course certificate",
+    mediaHref: operatingSystemJpg,
     mediaType: "image",
   },
 ];
