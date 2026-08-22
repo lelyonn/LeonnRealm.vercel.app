@@ -6,6 +6,7 @@ import { SharedFooter } from "../components/layout/SharedFooter";
 import { SkillMarquee } from "../components/skills/SkillMarquee";
 import { SkillPreview } from "../components/skills/SkillPreview";
 import type { Page, Skill } from "../types";
+import { useScrollReveal } from "../App";
 
 export function AboutPage({
   onSkillSelect, onSkillHover, hoveredSkill, navigate,
@@ -15,6 +16,8 @@ export function AboutPage({
   hoveredSkill: Skill | null;
   navigate: (to: Page) => void;
 }) {
+  useScrollReveal();
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-border">
@@ -33,15 +36,45 @@ export function AboutPage({
             Back to home
           </button>
 
+          {/* Mobile: portrait shown first, above text */}
+          <div className="mb-10 flex justify-center md:hidden">
+            <div className="relative w-full max-w-[280px]">
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-[3/4] max-h-[360px]">
+                <img
+                  src={portraitPhoto}
+                  alt="Leonard Jonathan Saputra"
+                  className="h-full w-full object-cover object-top"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full border border-[rgba(118,146,255,0.24)] spin-slow"
+                />
+              </div>
+              <div className="mt-3 rounded-xl border border-border bg-card p-3 text-center">
+                <div
+                  className="text-xl tracking-tight"
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 600, color: "var(--portfolio-accent)" }}
+                >
+                  UTC+7
+                </div>
+                <div className="mt-0.5 text-xs text-muted-foreground">Surakarta, ID</div>
+              </div>
+            </div>
+          </div>
+
           <div className="grid gap-16 md:grid-cols-[1fr_360px] md:gap-24 lg:grid-cols-[1fr_420px]">
             <div>
-              <div className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+              <div className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--portfolio-accent)]" />
                 About me
               </div>
 
               <h1
-                className="text-balance text-[42px] leading-[1.05] tracking-[-0.03em] md:text-[64px] lg:text-[76px]"
+                className="text-balance text-[36px] leading-[1.05] tracking-[-0.03em] md:text-[64px] lg:text-[76px] reveal"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
               >
                 I make things{" "}
@@ -52,26 +85,26 @@ export function AboutPage({
               </h1>
 
               <div className="mt-10 space-y-5 text-base leading-[1.75] text-foreground/80 md:text-lg">
-                <p>
+                <p className="reveal stagger-1">
                   Hi, I&apos;m Leonard Jonathan Saputra, a D3 Informatics Engineering student at Universitas Sebelas Maret
                   My background in technology started with web development, where I explored full-stack development, UI and design,
                   as well as game development. These experiences have given me a broad understanding of how digital
                   products are designed, built, and developed.
                 </p>
-                <p>
+                <p className="reveal stagger-2">
                   As I continue learning, my interest has increasingly shifted toward networking and cybersecurity, particularly Security Operations Center (SOC) and penetration testing.
-                  I’m especially interested in bug hunting because it allows me to understand how vulnerabilities are discovered, how systems can be exploited,
+                  I'm especially interested in bug hunting because it allows me to understand how vulnerabilities are discovered, how systems can be exploited,
                   and how they can be secured against real-world threats.
                 </p>
-                <p>
-                  I’m currently in the process of continuously learning and developing my skills
+                <p className="reveal stagger-3">
+                  I'm currently in the process of continuously learning and developing my skills
                   through hands-on projects, security challenges, and practical exploration.
                   My goal is to build a strong foundation in cybersecurity while combining my
-                  development background with an attacker’s perspective to better understand and secure digital systems.
+                  development background with an attacker's perspective to better understand and secure digital systems.
                 </p>
               </div>
 
-              <div className="mt-10 flex flex-wrap gap-3">
+              <div className="mt-10 flex flex-wrap gap-3 reveal stagger-4">
                 {[
                   { Icon: MapPin, text: "Surakarta, Indonesia" },
                   { Icon: GraduationCap, text: "Informatics Engineering" },
@@ -88,7 +121,8 @@ export function AboutPage({
               </div>
             </div>
 
-            <div className="relative">
+            {/* Desktop: portrait on the right */}
+            <div className="relative hidden md:block">
               <div className="sticky top-28">
                 <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-[3/4]">
                   <img
@@ -124,13 +158,13 @@ export function AboutPage({
       <section className="border-b border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <p
-            className="mx-auto max-w-4xl text-center text-2xl leading-[1.4] tracking-[-0.01em] text-foreground/90 md:text-4xl"
+            className="mx-auto max-w-4xl text-center text-xl leading-[1.4] tracking-[-0.01em] text-foreground/90 md:text-4xl reveal"
             style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
           >
             &ldquo;I like systems the same way I like music — the theory is there so you know exactly when
             to break it, and the discipline is what makes the break feel intentional.&rdquo;
           </p>
-          <div className="mt-6 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+          <div className="mt-6 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.22em] text-muted-foreground reveal stagger-1">
             <span className="h-px w-10 bg-border" />
             Leonard Jonathan Saputra
             <span className="h-px w-10 bg-border" />
@@ -141,10 +175,10 @@ export function AboutPage({
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-14 grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
-            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">(02) Competitions</div>
+            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">(02) Competitions</div>
             <div>
               <h2
-                className="text-2xl tracking-[-0.02em] md:text-4xl"
+                className="text-2xl tracking-[-0.02em] md:text-4xl reveal stagger-1"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 Challenges I&apos;ve{" "}
@@ -156,14 +190,14 @@ export function AboutPage({
           <div className="grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
             <div />
             <div className="space-y-6">
-              {competitions.map((c) => (
+              {competitions.map((c, idx) => (
                 <div
                   key={c.index}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:bg-card"
+                  className={`group relative overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:bg-card reveal stagger-${Math.min(idx + 1, 6)}`}
                 >
                   <div className="h-px w-full bg-gradient-to-r from-[rgba(118,146,255,0.65)] via-[rgba(118,146,255,0.22)] to-transparent" />
 
-                  <div className="p-8 md:p-10">
+                  <div className="p-6 md:p-10">
                     <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                       <div className="flex-1">
                         <div className="mb-3 flex flex-wrap items-center gap-3">
@@ -237,14 +271,32 @@ export function AboutPage({
         </div>
       </section>
 
+      <SkillMarquee
+        eyebrow="Engineering & Security"
+        skills={techSkills.filter((skill) => skill.label !== "Web Development")}
+        direction="left"
+        emphasis
+        speed={40}
+        onSelect={onSkillSelect}
+        onHover={onSkillHover}
+      />
+      <SkillPreview skill={hoveredSkill} />
+      <SkillMarquee
+        eyebrow="Off the Keyboard"
+        skills={otherSkills}
+        direction="right"
+        speed={48}
+        muted
+        onSelect={onSkillSelect}
+      />
 
       <section className="border-b border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-14 grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
-            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">(03) GitHub</div>
+            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">(03) GitHub</div>
             <div className="flex items-end justify-between gap-4">
               <h2
-                className="text-2xl tracking-[-0.02em] md:text-4xl"
+                className="text-2xl tracking-[-0.02em] md:text-4xl reveal stagger-1"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 Live{" "}
@@ -267,7 +319,7 @@ export function AboutPage({
             <div />
             <div className="space-y-4">
               {/* Stats + Languages row */}
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2 reveal">
                 <a
                   href="https://github.com/lelyonn"
                   target="_blank"
@@ -301,7 +353,7 @@ export function AboutPage({
                 href="https://github.com/lelyonn"
                 target="_blank"
                 rel="noreferrer"
-                className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
+                className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20 reveal stagger-1"
               >
                 <GitHubStatImage
                   src="https://streak-stats.demolab.com/?user=lelyonn&hide_border=true&background=02040b&stroke=ffffff14&ring=7692ff&fire=7692ff&currStreakLabel=7692ff&sideLabels=91a6cc&dates=91a6cc&sideNums=f5f5f4&currStreakNum=f5f5f4"
@@ -315,7 +367,7 @@ export function AboutPage({
                 href="https://github.com/lelyonn"
                 target="_blank"
                 rel="noreferrer"
-                className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
+                className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20 reveal stagger-2"
               >
                 <GitHubStatImage
                   src="https://github-readme-activity-graph.vercel.app/graph?username=lelyonn&bg_color=02040b&color=91a6cc&line=7692ff&point=7692ff&area=true&area_color=7692ff&hide_border=true&custom_title=Contribution+Activity"
@@ -331,11 +383,11 @@ export function AboutPage({
       <section id="lets-connect" className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
           <div className="mx-auto max-w-2xl">
-            <div className="mb-6 text-xs uppercase tracking-[0.22em] text-muted-foreground">
+            <div className="mb-6 text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">
               (03) Let&apos;s connect
             </div>
             <h2
-              className="mb-12 text-balance text-4xl tracking-[-0.03em] md:text-5xl"
+              className="mb-12 text-balance text-3xl tracking-[-0.03em] md:text-5xl reveal stagger-1"
               style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
             >
               Wanna talk? or just{" "}
@@ -344,7 +396,7 @@ export function AboutPage({
               </span>
             </h2>
 
-            <div className="divide-y divide-dashed divide-border overflow-hidden rounded-2xl border border-dashed border-border">
+            <div className="divide-y divide-dashed divide-border overflow-hidden rounded-2xl border border-dashed border-border reveal stagger-2">
               <a
                 href="mailto:leonardjhth091@gmail.com"
                 className="group flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-card"
@@ -358,11 +410,11 @@ export function AboutPage({
                   </span>
                   <span className="text-sm text-foreground/80" style={{ fontFamily: "var(--font-display)" }}>email</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)]">
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="truncate text-sm text-[var(--portfolio-accent)] transition-colors group-hover:text-[var(--portfolio-accent-strong)] max-w-[160px] sm:max-w-none">
                     leonardjhth091@gmail.com
                   </span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
+                  <ArrowUpRight className="h-3.5 w-3.5 flex-shrink-0 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--portfolio-accent)]" strokeWidth={1.75} />
                 </div>
               </a>
 

@@ -3,12 +3,15 @@ import { ArrowLeft, ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { projectCategories, projectCategoryColors, projects, type ProjectCategory } from "../data/portfolio";
 import { SharedFooter } from "../components/layout/SharedFooter";
 import type { Page } from "../types";
+import { useScrollReveal } from "../App";
 
 export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | "All">("All");
   const filteredProjects = activeCategory === "All"
     ? projects
     : projects.filter((project) => project.category === activeCategory);
+
+  useScrollReveal();
 
   return (
     <>
@@ -28,9 +31,9 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
             Back to home
           </button>
 
-          <div className="mb-4 text-xs uppercase tracking-[0.22em] text-muted-foreground">All projects</div>
+          <div className="mb-4 text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">All projects</div>
           <h1
-            className="max-w-3xl text-balance text-[42px] leading-[1.05] tracking-[-0.03em] md:text-[64px]"
+            className="max-w-3xl text-balance text-[36px] leading-[1.05] tracking-[-0.03em] md:text-[64px] reveal stagger-1"
             style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
           >
             Things I&apos;ve{" "}
@@ -39,17 +42,17 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
             </span>{" "}
             &amp; broken.
           </h1>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
+          <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg reveal stagger-2">
             A running list of projects - personal, academic, and everything in between. Each one taught me something.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-2">
+          <div className="mt-10 flex flex-wrap gap-2 reveal stagger-3">
             {["All", ...projectCategories].map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category as ProjectCategory | "All")}
                 className={
-                  "rounded-full border px-4 py-1.5 text-sm transition-colors " +
+                  "rounded-full border px-4 py-1.5 text-sm transition-all duration-200 active:scale-95 " +
                   (activeCategory === category
                     ? "border-[var(--portfolio-accent)] bg-[var(--portfolio-accent)] text-background shadow-[0_0_28px_rgba(118,146,255,0.24)]"
                     : "border-border text-muted-foreground hover:border-[var(--portfolio-accent)] hover:text-foreground")
@@ -66,8 +69,11 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
         <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 md:py-20">
           {filteredProjects.length > 0 ? (
             <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
-              {filteredProjects.map((p) => (
-                <article key={p.n} className="group relative flex flex-col bg-background transition-colors hover:bg-card">
+              {filteredProjects.map((p, idx) => (
+                <article
+                  key={p.n}
+                  className={`group relative flex flex-col bg-background transition-colors hover:bg-card reveal stagger-${Math.min(idx + 1, 6)}`}
+                >
                   <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                     <img
                       src={p.image}
@@ -86,7 +92,7 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
                       {p.credit}
                     </span>
                   </div>
-                  <div className="flex flex-1 flex-col gap-6 p-8 md:p-10">
+                  <div className="flex flex-1 flex-col gap-6 p-6 md:p-10">
                     <div>
                       <span
                         className="rounded-full px-3 py-1 text-xs text-background"
@@ -135,7 +141,7 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
               ))}
             </div>
           ) : (
-            <div className="overflow-hidden rounded-2xl border border-dashed border-border">
+            <div className="overflow-hidden rounded-2xl border border-dashed border-border reveal">
               <div className="flex flex-col items-center justify-center gap-3 px-6 py-16 text-center">
                 <div
                   className="text-3xl tracking-tight text-foreground/20"

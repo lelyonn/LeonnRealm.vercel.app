@@ -1,12 +1,58 @@
 import { Github, Instagram, Linkedin } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { footerLinks } from "../../data/portfolio";
 
 export function SharedFooter() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+    const children = el.querySelectorAll(".footer-reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("footer-revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -20px 0px" }
+    );
+
+    children.forEach((child) => observer.observe(child));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer id="contact" className="border-t border-border bg-card/40">
+    <footer id="contact" ref={footerRef} className="border-t border-border bg-card/40">
+      <style>{`
+        .footer-reveal {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .footer-reveal.footer-revealed {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .footer-reveal:nth-child(1) { transition-delay: 0s; }
+        .footer-reveal:nth-child(2) { transition-delay: 0.1s; }
+        .footer-reveal:nth-child(3) { transition-delay: 0.2s; }
+        @media (prefers-reduced-motion: reduce) {
+          .footer-reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+        }
+      `}</style>
+
       <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
-          <div>
+        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr]">
+          <div className="footer-reveal sm:col-span-2 md:col-span-1">
             <div className="flex items-baseline gap-1">
               <span className="text-5xl tracking-tight md:text-6xl" style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}>
                 Yon
@@ -18,7 +64,7 @@ export function SharedFooter() {
             </p>
           </div>
 
-          <div>
+          <div className="footer-reveal">
             <div className="mb-5 text-xs uppercase tracking-[0.22em] text-muted-foreground">Navigate</div>
             <ul className="space-y-3">
               {footerLinks.map((l) => (
@@ -37,7 +83,7 @@ export function SharedFooter() {
             </ul>
           </div>
 
-          <div>
+          <div className="footer-reveal">
             <div className="mb-5 text-xs uppercase tracking-[0.22em] text-muted-foreground">Elsewhere</div>
             <div className="flex gap-3">
               {[
@@ -47,7 +93,7 @@ export function SharedFooter() {
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)] hover:shadow-[0_0_16px_rgba(118,146,255,0.25)]"
                 >
                   <Icon className="h-4.5 w-4.5" strokeWidth={1.5} />
                 </a>

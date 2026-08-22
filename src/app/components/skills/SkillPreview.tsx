@@ -7,7 +7,7 @@ export function SkillPreview({ skill }: { skill: Skill | null }) {
       <div className="mx-auto max-w-[1400px] px-6 py-10 md:px-12 md:py-14">
         <div
           key={skill?.label ?? "empty"}
-          className="min-h-[180px]"
+          className="min-h-[160px] md:min-h-[180px]"
           style={{ animation: "preview-in 320ms cubic-bezier(0.2, 0.9, 0.2, 1)" }}
         >
           {skill && Icon ? (
@@ -17,15 +17,15 @@ export function SkillPreview({ skill }: { skill: Skill | null }) {
                 {skill.role}
               </div>
               <h3
-                className="text-balance text-4xl tracking-[-0.02em] md:text-6xl"
+                className="text-balance text-3xl tracking-[-0.02em] md:text-6xl"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
               >
                 {skill.label}
               </h3>
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-lg">
                 {skill.summary}
               </p>
-              <div className="mt-7 flex flex-wrap items-start justify-center gap-x-8 gap-y-5">
+              <div className="mt-7 flex flex-wrap items-start justify-center gap-x-6 gap-y-5 md:gap-x-8">
                 {skill.tools.map((t) => (
                   <div key={t} className="flex flex-col items-center gap-2">
                     <span className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-background">
@@ -53,7 +53,9 @@ export function SkillPreview({ skill }: { skill: Skill | null }) {
                 </div>
               )}
               <div className="mt-6 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">
-                Click the chip to read the full breakdown
+                {/* Device-aware hint */}
+                <span className="hidden md:inline">Click the chip to read the full breakdown</span>
+                <span className="md:hidden">Tap the chip to read the full breakdown</span>
               </div>
             </div>
           ) : (
@@ -62,7 +64,9 @@ export function SkillPreview({ skill }: { skill: Skill | null }) {
                 className="block text-2xl tracking-tight text-foreground/40 md:text-3xl"
                 style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
               >
-                hover a skill above
+                {/* Device-aware empty state */}
+                <span className="hidden md:inline">hover a skill above</span>
+                <span className="md:hidden">tap a skill above</span>
               </span>
               <span className="mt-2 inline-block text-xs uppercase tracking-[0.22em] text-muted-foreground/60">
                 to preview the role

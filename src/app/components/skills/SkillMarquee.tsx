@@ -22,13 +22,18 @@ export function SkillMarquee({
       <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 pt-5 text-xs uppercase tracking-[0.22em] text-muted-foreground md:px-12">
         <span className={"inline-block h-1.5 w-1.5 rounded-full " + (emphasis ? "bg-[var(--portfolio-accent)]" : "bg-muted-foreground/60")} />
         {eyebrow}
+        {/* Desktop hint */}
         <span className="ml-auto hidden text-[10px] tracking-[0.18em] text-muted-foreground/70 md:inline">
           hover a skill to highlight · click to read
         </span>
+        {/* Mobile hint */}
+        <span className="ml-auto text-[10px] tracking-[0.18em] text-muted-foreground/70 md:hidden">
+          tap a skill to read
+        </span>
       </div>
 
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent md:w-24" />
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent md:w-24" />
 
       <div className="overflow-hidden py-6">
         <div
@@ -48,8 +53,9 @@ export function SkillMarquee({
                   onBlur={() => onHover?.(null)}
                   aria-label={`Read about ${s.label}`}
                   className={
-                    "group/chip flex items-center gap-3 rounded-md px-3 py-1.5 transition-colors duration-200 cursor-pointer " +
-                    "hover:bg-foreground hover:text-background " +
+                    "group/chip flex items-center gap-3 rounded-md px-3 py-1.5 transition-all duration-200 cursor-pointer " +
+                    "hover:bg-foreground hover:text-background hover:shadow-[0_0_20px_rgba(118,146,255,0.18)] " +
+                    "active:scale-95 " +
                     (muted ? "text-foreground/60" : "text-foreground/90")
                   }
                 >

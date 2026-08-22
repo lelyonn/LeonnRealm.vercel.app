@@ -12,11 +12,29 @@ export default function App() {
   const [active, setActive] = useState<Skill | null>(null);
   const [hovered, setHovered] = useState<Skill | null>(null);
   const { page, navigate } = useRoute();
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const el = document.documentElement;
+      const scrollTop = el.scrollTop || document.body.scrollTop;
+      const scrollHeight = el.scrollHeight - el.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Reset scroll to top on page change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [page]);
 
   return (
     <div className="site-shell min-h-screen w-full text-foreground" style={{ fontFamily: "var(--font-sans)" }}>
       <CursorGlow />
-      <Nav page={page} navigate={navigate} />
+      <Nav page={page} navigate={navigate} scrollProgress={scrollProgress} />
 
       <main key={page} className="page-transition">
         {page === "about" ? (
@@ -58,6 +76,22 @@ export default function App() {
           from { opacity: 0; transform: translateY(20px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes slide-in-left {
+          from { opacity: 0; transform: translateX(-24px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slide-in-right {
+          from { opacity: 0; transform: translateX(24px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scale-in {
+          from { opacity: 0; transform: scale(0.94); }
+          to   { opacity: 1; transform: scale(1); }
+        }
         @keyframes page-in {
           from {
             opacity: 0;
@@ -76,6 +110,42 @@ export default function App() {
           animation: page-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
           will-change: opacity, transform, filter;
         }
+        /* Scroll-reveal base state */
+        .reveal {
+          opacity: 0;
+          transform: translateY(28px);
+          transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.revealed {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .reveal-left {
+          opacity: 0;
+          transform: translateX(-28px);
+          transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-left.revealed {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .reveal-scale {
+          opacity: 0;
+          transform: scale(0.95);
+          transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-scale.revealed {
+          opacity: 1;
+          transform: scale(1);
+        }
+        /* Stagger delays */
+        .stagger-1 { transition-delay: 0.05s; }
+        .stagger-2 { transition-delay: 0.12s; }
+        .stagger-3 { transition-delay: 0.19s; }
+        .stagger-4 { transition-delay: 0.26s; }
+        .stagger-5 { transition-delay: 0.33s; }
+        .stagger-6 { transition-delay: 0.40s; }
+
         .site-shell {
           position: relative;
           isolation: isolate;
@@ -154,10 +224,51 @@ export default function App() {
           to   { transform: rotate(360deg); }
         }
         .spin-slow { animation: spin-slow 12s linear infinite; }
+
+        /* Scroll progress bar */
+        .scroll-progress-bar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 1.5px;
+          background: linear-gradient(90deg, var(--portfolio-accent), rgba(171, 210, 250, 0.8));
+          transition: width 0.1s linear;
+          box-shadow: 0 0 8px rgba(118, 146, 255, 0.6);
+          pointer-events: none;
+          z-index: 50;
+        }
+
+        /* Certificate fade transition */
+        @keyframes cert-in {
+          from { opacity: 0; transform: translateY(10px) scale(0.98); }
+          to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .cert-animate {
+          animation: cert-in 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        /* Glow pulse for CTA buttons */
+        @keyframes glow-pulse {
+          0%, 100% { box-shadow: 0 0 36px rgba(118, 146, 255, 0.28); }
+          50%       { box-shadow: 0 0 52px rgba(118, 146, 255, 0.45); }
+        }
+        .glow-pulse {
+          animation: glow-pulse 3s ease-in-out infinite;
+        }
+
         @media (prefers-reduced-motion: reduce) {
-          .page-transition {
+          .page-transition,
+          .reveal,
+          .reveal-left,
+          .reveal-scale {
             animation: none;
+            transition: none;
+            opacity: 1;
+            transform: none;
             will-change: auto;
+          }
+          .glow-pulse {
+            animation: none;
           }
         }
       `}</style>
@@ -204,4 +315,27 @@ function CursorGlow() {
   }, []);
 
   return <div ref={glowRef} className="cursor-glow" aria-hidden="true" data-visible="false" />;
+}
+
+// Hook: Scroll-reveal with Intersection Observer
+export function useScrollReveal(threshold = 0.12) {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal, .reveal-left, .reveal-scale");
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  });
 }
