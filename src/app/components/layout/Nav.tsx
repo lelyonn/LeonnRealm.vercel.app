@@ -52,7 +52,6 @@ export function Nav({
           ))}
         </div>
 
-        {/* Contact button — hidden on very small screens, shown sm+ */}
         <button
           onClick={goToConnect}
           className="group inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs transition-colors hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-accent)] hover:text-background sm:px-4 sm:text-sm"
@@ -63,7 +62,6 @@ export function Nav({
         </button>
       </div>
 
-      {/* Mobile bottom nav */}
       <nav className="mx-auto grid max-w-[1400px] grid-cols-3 border-t border-border/70 px-3 py-2 md:hidden">
         {navItems.map((item) => (
           <button
@@ -81,7 +79,6 @@ export function Nav({
         ))}
       </nav>
 
-      {/* Scroll progress bar */}
       {scrollProgress !== undefined && scrollProgress > 0 && (
         <div
           className="scroll-progress-bar"

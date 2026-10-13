@@ -37,16 +37,16 @@ export const techSkills: Skill[] = [
       { label: "Capture the Flag", icon: Flag },
       { label: "Bug Bounty", icon: Bug },
     ],
-    tools: ["Burp Suite", "Wireshark", "Kali Linux",],
+    tools: ["Burp Suite", "Wireshark", "Kali Linux"],
     links: [
       {
         label: "See my full project here",
-        href: "/#/projects",
-        note: "Project i create about cyber security",
+        href: "#/projects",
+        note: "Projects I created focused on cyber security",
       },
       {
         label: "Read my security-focused blog posts",
-        href: "/#/blog",
+        href: "#/blog",
         note: "CTF writeups, bug bounty reports, and lab notes",
       }
     ],
@@ -282,7 +282,7 @@ export const certificates: Certificate[] = [
   },
   {
     index: "07",
-    title: "Operation System Basic Course",
+    title: "Operating Systems Fundamentals",
     issuer: "Universitas Sebelas Maret",
     year: "2025",
     description:

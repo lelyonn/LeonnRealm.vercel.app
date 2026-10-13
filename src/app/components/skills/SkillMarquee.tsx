@@ -22,11 +22,9 @@ export function SkillMarquee({
       <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 pt-5 text-xs uppercase tracking-[0.22em] text-muted-foreground md:px-12">
         <span className={"inline-block h-1.5 w-1.5 rounded-full " + (emphasis ? "bg-[var(--portfolio-accent)]" : "bg-muted-foreground/60")} />
         {eyebrow}
-        {/* Desktop hint */}
         <span className="ml-auto hidden text-[10px] tracking-[0.18em] text-muted-foreground/70 md:inline">
           hover a skill to highlight · click to read
         </span>
-        {/* Mobile hint */}
         <span className="ml-auto text-[10px] tracking-[0.18em] text-muted-foreground/70 md:hidden">
           tap a skill to read
         </span>
@@ -43,7 +41,7 @@ export function SkillMarquee({
           {loop.map((s, i) => {
             const Sep = separators[i % separators.length];
             return (
-              <div key={i} className="flex items-center gap-10">
+              <div key={`${s.label}-${i}`} className="flex items-center gap-10">
                 <button
                   type="button"
                   onClick={() => onSelect(s)}

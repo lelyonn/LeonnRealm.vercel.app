@@ -36,7 +36,6 @@ export function AboutPage({
             Back to home
           </button>
 
-          {/* Mobile: portrait shown first, above text */}
           <div className="mb-10 flex justify-center md:hidden">
             <div className="relative w-full max-w-[280px]">
               <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-[3/4] max-h-[360px]">
@@ -86,7 +85,7 @@ export function AboutPage({
 
               <div className="mt-10 space-y-5 text-base leading-[1.75] text-foreground/80 md:text-lg">
                 <p className="reveal stagger-1">
-                  Hi, I&apos;m Leonard Jonathan Saputra, a D3 Informatics Engineering student at Universitas Sebelas Maret
+                  Hi, I&apos;m Leonard Jonathan Saputra, a D3 Informatics Engineering student at Universitas Sebelas Maret.
                   My background in technology started with web development, where I explored full-stack development, UI and design,
                   as well as game development. These experiences have given me a broad understanding of how digital
                   products are designed, built, and developed.
@@ -121,7 +120,6 @@ export function AboutPage({
               </div>
             </div>
 
-            {/* Desktop: portrait on the right */}
             <div className="relative hidden md:block">
               <div className="sticky top-28">
                 <div className="relative overflow-hidden rounded-2xl border border-border bg-card aspect-[3/4]">
@@ -280,7 +278,7 @@ export function AboutPage({
         onSelect={onSkillSelect}
         onHover={onSkillHover}
       />
-      <SkillPreview skill={hoveredSkill} />
+      <SkillPreview skill={hoveredSkill} navigate={navigate} />
       <SkillMarquee
         eyebrow="Off the Keyboard"
         skills={otherSkills}
@@ -318,7 +316,6 @@ export function AboutPage({
           <div className="grid gap-3 md:grid-cols-[180px_1fr] md:gap-16">
             <div />
             <div className="space-y-4">
-              {/* Stats + Languages row */}
               <div className="grid gap-4 sm:grid-cols-2 reveal">
                 <a
                   href="https://github.com/lelyonn"
@@ -348,7 +345,6 @@ export function AboutPage({
                 </a>
               </div>
 
-              {/* Streak */}
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"
@@ -362,7 +358,6 @@ export function AboutPage({
                 />
               </a>
 
-              {/* Contribution graph */}
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"

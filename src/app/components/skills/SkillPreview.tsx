@@ -1,6 +1,12 @@
-import type { Skill } from "../../types";
+import type { Page, Skill } from "../../types";
 
-export function SkillPreview({ skill }: { skill: Skill | null }) {
+export function SkillPreview({
+  skill,
+  navigate,
+}: {
+  skill: Skill | null;
+  navigate?: (to: Page) => void;
+}) {
   const Icon = skill?.icon;
   return (
     <div className="relative border-t border-border bg-card/20">
@@ -39,21 +45,40 @@ export function SkillPreview({ skill }: { skill: Skill | null }) {
               </div>
               {skill.links && skill.links.length > 0 && (
                 <div className="mt-6 flex flex-wrap justify-center gap-2">
-                  {skill.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground/85 transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+                  {skill.links.map((link) => {
+                    const isInternalHash = link.href.startsWith("/#/") || link.href.startsWith("#/");
+                    const pageTarget = isInternalHash
+                      ? (link.href.replace(/^(\/#\/|#\/)/, "") as Page)
+                      : null;
+
+                    if (pageTarget && navigate) {
+                      return (
+                        <button
+                          key={link.label}
+                          type="button"
+                          onClick={() => navigate(pageTarget)}
+                          className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground/85 transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+                        >
+                          {link.label}
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground/85 transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  })}
                 </div>
               )}
               <div className="mt-6 text-[10px] uppercase tracking-[0.22em] text-muted-foreground/70">
-                {/* Device-aware hint */}
                 <span className="hidden md:inline">Click the chip to read the full breakdown</span>
                 <span className="md:hidden">Tap the chip to read the full breakdown</span>
               </div>
@@ -64,7 +89,6 @@ export function SkillPreview({ skill }: { skill: Skill | null }) {
                 className="block text-2xl tracking-tight text-foreground/40 md:text-3xl"
                 style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
               >
-                {/* Device-aware empty state */}
                 <span className="hidden md:inline">hover a skill above</span>
                 <span className="md:hidden">tap a skill above</span>
               </span>

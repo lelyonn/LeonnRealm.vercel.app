@@ -26,7 +26,6 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Reset scroll to top on page change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [page]);
@@ -48,7 +47,7 @@ export default function App() {
         )}
       </main>
 
-      <SkillDialog skill={active} onClose={() => setActive(null)} />
+      <SkillDialog skill={active} onClose={() => setActive(null)} navigate={navigate} />
 
       <style>{`
         @keyframes marquee-left {
@@ -110,7 +109,6 @@ export default function App() {
           animation: page-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
           will-change: opacity, transform, filter;
         }
-        /* Scroll-reveal base state */
         .reveal {
           opacity: 0;
           transform: translateY(28px);
@@ -138,7 +136,6 @@ export default function App() {
           opacity: 1;
           transform: scale(1);
         }
-        /* Stagger delays */
         .stagger-1 { transition-delay: 0.05s; }
         .stagger-2 { transition-delay: 0.12s; }
         .stagger-3 { transition-delay: 0.19s; }
@@ -225,7 +222,6 @@ export default function App() {
         }
         .spin-slow { animation: spin-slow 12s linear infinite; }
 
-        /* Scroll progress bar */
         .scroll-progress-bar {
           position: absolute;
           bottom: 0;
@@ -238,7 +234,6 @@ export default function App() {
           z-index: 50;
         }
 
-        /* Certificate fade transition */
         @keyframes cert-in {
           from { opacity: 0; transform: translateY(10px) scale(0.98); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -247,7 +242,6 @@ export default function App() {
           animation: cert-in 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
-        /* Glow pulse for CTA buttons */
         @keyframes glow-pulse {
           0%, 100% { box-shadow: 0 0 36px rgba(118, 146, 255, 0.28); }
           50%       { box-shadow: 0 0 52px rgba(118, 146, 255, 0.45); }
@@ -317,7 +311,6 @@ function CursorGlow() {
   return <div ref={glowRef} className="cursor-glow" aria-hidden="true" data-visible="false" />;
 }
 
-// Hook: Scroll-reveal with Intersection Observer
 export function useScrollReveal(threshold = 0.12) {
   useEffect(() => {
     const elements = document.querySelectorAll(".reveal, .reveal-left, .reveal-scale");
@@ -337,5 +330,5 @@ export function useScrollReveal(threshold = 0.12) {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  });
+  }, [threshold]);
 }

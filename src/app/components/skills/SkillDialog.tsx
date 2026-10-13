@@ -1,8 +1,16 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowUpRight, X } from "lucide-react";
-import type { Skill } from "../../types";
+import type { Page, Skill } from "../../types";
 
-export function SkillDialog({ skill, onClose }: { skill: Skill | null; onClose: () => void }) {
+export function SkillDialog({
+  skill,
+  onClose,
+  navigate,
+}: {
+  skill: Skill | null;
+  onClose: () => void;
+  navigate?: (to: Page) => void;
+}) {
   const open = skill !== null;
   const Icon = skill?.icon;
 
@@ -103,25 +111,60 @@ export function SkillDialog({ skill, onClose }: { skill: Skill | null; onClose: 
                   <div className="mt-6 border-t border-border pt-5">
                     <div className="mb-3 text-xs uppercase tracking-[0.22em] text-muted-foreground">Selected work & proof</div>
                     <ul className="space-y-2">
-                      {skill.links.map((l) => (
-                        <li key={l.label}>
-                          <a
-                            href={l.href} target="_blank" rel="noreferrer"
-                            className="group/link flex items-start justify-between gap-3 rounded-lg border border-border bg-background px-4 py-3 transition-colors hover:border-foreground"
-                          >
-                            <div className="min-w-0">
-                              <div className="text-sm tracking-tight" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
-                                {l.label}
+                      {skill.links.map((l) => {
+                        const isInternalHash = l.href.startsWith("/#/") || l.href.startsWith("#/");
+                        const pageTarget = isInternalHash
+                          ? (l.href.replace(/^(\/#\/|#\/)/, "") as Page)
+                          : null;
+
+                        if (pageTarget && navigate) {
+                          return (
+                            <li key={l.label}>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  navigate(pageTarget);
+                                  onClose();
+                                }}
+                                className="group/link flex w-full items-start justify-between gap-3 rounded-lg border border-border bg-background px-4 py-3 text-left transition-colors hover:border-foreground"
+                              >
+                                <div className="min-w-0">
+                                  <div className="text-sm tracking-tight" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
+                                    {l.label}
+                                  </div>
+                                  {l.note && <div className="mt-0.5 truncate text-xs text-muted-foreground">{l.note}</div>}
+                                </div>
+                                <ArrowUpRight
+                                  className="mt-1 h-4 w-4 flex-shrink-0 text-muted-foreground transition-all group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-foreground"
+                                  strokeWidth={1.75}
+                                />
+                              </button>
+                            </li>
+                          );
+                        }
+
+                        return (
+                          <li key={l.label}>
+                            <a
+                              href={l.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group/link flex items-start justify-between gap-3 rounded-lg border border-border bg-background px-4 py-3 transition-colors hover:border-foreground"
+                            >
+                              <div className="min-w-0">
+                                <div className="text-sm tracking-tight" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
+                                  {l.label}
+                                </div>
+                                {l.note && <div className="mt-0.5 truncate text-xs text-muted-foreground">{l.note}</div>}
                               </div>
-                              {l.note && <div className="mt-0.5 truncate text-xs text-muted-foreground">{l.note}</div>}
-                            </div>
-                            <ArrowUpRight
-                              className="mt-1 h-4 w-4 flex-shrink-0 text-muted-foreground transition-all group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-foreground"
-                              strokeWidth={1.75}
-                            />
-                          </a>
-                        </li>
-                      ))}
+                              <ArrowUpRight
+                                className="mt-1 h-4 w-4 flex-shrink-0 text-muted-foreground transition-all group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-foreground"
+                                strokeWidth={1.75}
+                              />
+                            </a>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}

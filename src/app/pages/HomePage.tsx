@@ -119,7 +119,7 @@ export function HomePage({
           onSelect={onSkillSelect}
           onHover={onSkillHover}
         />
-        <SkillPreview skill={hoveredSkill} />
+        <SkillPreview skill={hoveredSkill} navigate={navigate} />
         <SkillMarquee
           eyebrow="Off the Keyboard"
           skills={otherSkills}
@@ -239,9 +239,7 @@ export function HomePage({
           className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_50%_50%,rgba(118,146,255,0.18),transparent_54%)]"
         />
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
-          {/* Mobile: stacked layout */}
           <div className="flex flex-col gap-10 lg:hidden">
-            {/* Certificate info */}
             <div className="relative z-10 reveal">
               <div className="mb-8 text-xs uppercase tracking-[0.32em] text-muted-foreground">// Certificates</div>
               <div className="mb-4 text-sm uppercase tracking-[0.28em] text-[var(--portfolio-accent)]">
@@ -280,7 +278,6 @@ export function HomePage({
               </div>
             </div>
 
-            {/* Certificate card — mobile */}
             <div key={certAnimKey} className="cert-animate relative mx-auto w-full max-w-[480px] reveal stagger-2">
               <div className="overflow-hidden rounded-[18px] border-[8px] border-foreground/90 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.38)]">
                 <div className="aspect-[1.42/1] bg-white">
@@ -292,7 +289,6 @@ export function HomePage({
               </div>
             </div>
 
-            {/* Dots & navigation — mobile */}
             <div className="flex items-center justify-center gap-4 reveal stagger-3">
               <button
                 onClick={() => goToCertificate(-1)}
@@ -331,7 +327,6 @@ export function HomePage({
             </div>
           </div>
 
-          {/* Desktop: original 2-col layout */}
           <div className="hidden min-h-[720px] items-center gap-14 lg:grid lg:grid-cols-[0.82fr_1.18fr]">
             <div className="relative z-10 reveal-left">
               <div className="mb-8 text-xs uppercase tracking-[0.32em] text-muted-foreground">// Certificates</div>
@@ -541,7 +536,6 @@ export function HomePage({
             </div>
           )}
 
-          {/* Mobile: all posts link */}
           <div className="mt-8 flex justify-center md:hidden reveal stagger-3">
             <button
               onClick={() => navigate("blog")}
