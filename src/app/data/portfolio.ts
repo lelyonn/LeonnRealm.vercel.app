@@ -18,6 +18,7 @@ import itEssentialsJpg from "@/imports/certificates/ITessen.jpg";
 import redHatJpg from "@/imports/certificates/redhat.jpg";
 import researchParticipationPng from "@/imports/certificates/vr-research-participation.png";
 import operatingSystemJpg from "@/imports/certificates/Sistemoperasi.jpg";
+import sifLogo from "@/imports/LogoSIF26.svg";
 import type { Skill } from "../types";
 
 export const techSkills: Skill[] = [
@@ -178,6 +179,19 @@ export const projects: Project[] = [
     credit: "Live preview",
     github: null,
     live: "https://manajemen-tugas-kuliah-nu.vercel.app",
+  },
+  {
+    n: "04",
+    title: "SIF 2026 E-Ticketing Platform",
+    category: "Web Development",
+    blurb:
+      "A seminar registration and automated e-ticketing platform for Smart IT Festival 2026. Handled backend development including multi-session registration validation, automated unique ticket code generation, Google Sheets database synchronization, and transactional e-ticket email dispatching.",
+    tags: ["Backend Development", "Next.js", "TypeScript", "Google Sheets API", "Zod", "Email Service"],
+    year: "2026",
+    image: sifLogo,
+    credit: "Live preview",
+    github: null,
+    live: "https://e-ticketing-sif-2026.vercel.app/",
   },
 ];
 
