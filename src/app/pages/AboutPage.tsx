@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowUpRight, Calendar, ExternalLink, Github, GraduationCap, Instagram, Linkedin, MapPin } from "lucide-react";
-import portraitPhoto from "@/imports/fotoleon.jpeg";
+import portraitPhoto from "@/imports/fotoleon.webp";
 import { competitions, otherSkills, techSkills } from "../data/portfolio";
 import { GitHubStatImage } from "../components/github/GitHubStatImage";
 import { SharedFooter } from "../components/layout/SharedFooter";
@@ -42,6 +42,7 @@ export function AboutPage({
                 <img
                   src={portraitPhoto}
                   alt="Leonard Jonathan Saputra"
+                  decoding="async"
                   className="h-full w-full object-cover object-top"
                 />
                 <div
@@ -126,6 +127,7 @@ export function AboutPage({
                   <img
                     src={portraitPhoto}
                     alt="Leonard Jonathan Saputra"
+                    decoding="async"
                     className="h-full w-full object-cover object-top"
                   />
                   <div

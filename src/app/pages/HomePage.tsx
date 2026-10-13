@@ -3,6 +3,8 @@ import { ArrowUpRight, Award, ChevronLeft, ChevronRight, ExternalLink, Github } 
 import {
   blogPosts,
   categoryColors,
+  certificateCategories,
+  type CertificateCategory,
   certificates,
   otherSkills,
   projectCategoryColors,
@@ -25,15 +27,32 @@ export function HomePage({
 }) {
   const featuredPost = blogPosts[0];
   const primaryRoles = techSkills.filter((skill) => skill.label !== "Web Development");
+  const [activeCertCategory, setActiveCertCategory] = useState<"All" | CertificateCategory>("All");
   const [activeCertificateIndex, setActiveCertificateIndex] = useState(0);
   const [certAnimKey, setCertAnimKey] = useState(0);
-  const activeCertificate = certificates[activeCertificateIndex];
-  const visibleCertificates = [1, 2].map((offset) => certificates[(activeCertificateIndex + offset) % certificates.length]);
+
+  const filteredCertificates = activeCertCategory === "All"
+    ? certificates
+    : certificates.filter((c) => c.category === activeCertCategory);
+
+  const activeCertificate = filteredCertificates[activeCertificateIndex] || filteredCertificates[0];
+
+  const peekOffsets = filteredCertificates.length >= 3 ? [1, 2] : filteredCertificates.length === 2 ? [1] : [];
+  const visibleCertificates = peekOffsets.map(
+    (offset) => filteredCertificates[(activeCertificateIndex + offset) % filteredCertificates.length]
+  );
 
   useScrollReveal();
 
+  const handleCategoryChange = (category: "All" | CertificateCategory) => {
+    setActiveCertCategory(category);
+    setActiveCertificateIndex(0);
+    setCertAnimKey((k) => k + 1);
+  };
+
   const goToCertificate = (direction: 1 | -1) => {
-    setActiveCertificateIndex((current) => (current + direction + certificates.length) % certificates.length);
+    if (filteredCertificates.length <= 1) return;
+    setActiveCertificateIndex((current) => (current + direction + filteredCertificates.length) % filteredCertificates.length);
     setCertAnimKey((k) => k + 1);
   };
 
@@ -157,6 +176,7 @@ export function HomePage({
                     src={p.image}
                     alt={p.title}
                     loading="lazy"
+                    decoding="async"
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
                   <div
@@ -239,9 +259,30 @@ export function HomePage({
           className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_50%_50%,rgba(118,146,255,0.18),transparent_54%)]"
         />
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
+          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-center md:justify-between reveal">
+            <div>
+              <div className="text-xs uppercase tracking-[0.32em] text-muted-foreground">// (03) Certifications</div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {(["All", ...certificateCategories] as const).map((category) => (
+                <button
+                  key={category}
+                  onClick={() => handleCategoryChange(category)}
+                  className={
+                    "rounded-full border px-4 py-1.5 text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 " +
+                    (activeCertCategory === category
+                      ? "border-[var(--portfolio-accent)] bg-[var(--portfolio-accent)] text-background shadow-[0_0_24px_rgba(118,146,255,0.22)]"
+                      : "border-border bg-card/40 text-muted-foreground hover:border-[var(--portfolio-accent)] hover:text-foreground")
+                  }
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-col gap-10 lg:hidden">
             <div className="relative z-10 reveal">
-              <div className="mb-8 text-xs uppercase tracking-[0.32em] text-muted-foreground">// Certificates</div>
               <div className="mb-4 text-sm uppercase tracking-[0.28em] text-[var(--portfolio-accent)]">
                 {activeCertificate.issuer} - {activeCertificate.year}
               </div>
@@ -298,7 +339,7 @@ export function HomePage({
                 <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
               </button>
               <div className="flex items-center gap-2.5">
-                {certificates.map((certificate, index) => (
+                {filteredCertificates.map((certificate, index) => (
                   <button
                     key={certificate.index}
                     onClick={() => handleDotClick(index)}
@@ -308,7 +349,7 @@ export function HomePage({
                         ? "w-8 bg-[var(--portfolio-accent)]"
                         : "w-2 bg-muted-foreground/45 hover:bg-foreground")
                     }
-                    aria-label={`Show certificate ${certificate.index}`}
+                    aria-label={`Show certificate ${certificate.title}`}
                   />
                 ))}
               </div>
@@ -320,16 +361,15 @@ export function HomePage({
                 <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
               </button>
               <div className="ml-1 text-sm font-semibold uppercase tracking-[0.24em]">
-                <span className="text-[var(--portfolio-accent)]">{activeCertificate.index}</span>
+                <span className="text-[var(--portfolio-accent)]">{String(activeCertificateIndex + 1).padStart(2, "0")}</span>
                 <span className="mx-2 text-muted-foreground">/</span>
-                <span className="text-muted-foreground">{String(certificates.length).padStart(2, "0")}</span>
+                <span className="text-muted-foreground">{String(filteredCertificates.length).padStart(2, "0")}</span>
               </div>
             </div>
           </div>
 
           <div className="hidden min-h-[720px] items-center gap-14 lg:grid lg:grid-cols-[0.82fr_1.18fr]">
             <div className="relative z-10 reveal-left">
-              <div className="mb-8 text-xs uppercase tracking-[0.32em] text-muted-foreground">// Certificates</div>
               <div className="mb-4 text-sm uppercase tracking-[0.28em] text-[var(--portfolio-accent)]">
                 {activeCertificate.issuer} - {activeCertificate.year}
               </div>
@@ -372,8 +412,11 @@ export function HomePage({
                   <button
                     key={certificate.index}
                     onClick={() => {
-                      setActiveCertificateIndex(certificates.findIndex((item) => item.index === certificate.index));
-                      setCertAnimKey((k) => k + 1);
+                      const targetIdx = filteredCertificates.findIndex((item) => item.index === certificate.index);
+                      if (targetIdx !== -1) {
+                        setActiveCertificateIndex(targetIdx);
+                        setCertAnimKey((k) => k + 1);
+                      }
                     }}
                     className="absolute top-1/2 h-[270px] w-[410px] -translate-y-1/2 overflow-hidden rounded-[18px] border border-foreground/20 bg-white opacity-45 shadow-2xl blur-[1px] transition hover:opacity-70"
                     style={{
@@ -408,7 +451,7 @@ export function HomePage({
                   <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
                 </button>
                 <div className="flex items-center gap-3">
-                  {certificates.map((certificate, index) => (
+                  {filteredCertificates.map((certificate, index) => (
                     <button
                       key={certificate.index}
                       onClick={() => handleDotClick(index)}
@@ -418,7 +461,7 @@ export function HomePage({
                           ? "w-9 bg-[var(--portfolio-accent)]"
                           : "w-2.5 bg-muted-foreground/45 hover:bg-foreground")
                       }
-                      aria-label={`Show certificate ${certificate.index}`}
+                      aria-label={`Show certificate ${certificate.title}`}
                     />
                   ))}
                 </div>
@@ -430,9 +473,9 @@ export function HomePage({
                   <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
                 </button>
                 <div className="ml-2 text-sm font-semibold uppercase tracking-[0.24em]">
-                  <span className="text-[var(--portfolio-accent)]">{activeCertificate.index}</span>
+                  <span className="text-[var(--portfolio-accent)]">{String(activeCertificateIndex + 1).padStart(2, "0")}</span>
                   <span className="mx-3 text-muted-foreground">/</span>
-                  <span className="text-muted-foreground">{String(certificates.length).padStart(2, "0")}</span>
+                  <span className="text-muted-foreground">{String(filteredCertificates.length).padStart(2, "0")}</span>
                 </div>
               </div>
             </div>
@@ -568,6 +611,7 @@ function CertificateMedia({
         alt={`${certificate.title} certificate`}
         className="h-full w-full object-cover"
         loading="lazy"
+        decoding="async"
       />
     );
   }

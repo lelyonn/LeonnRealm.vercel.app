@@ -10,14 +10,19 @@ import {
   Terminal,
 } from "lucide-react";
 import pentestReportPdf from "@/imports/Pentest_Report_PTVulnapp_LeonardJonathanSaputra.pdf";
-import honeypotPreview from "@/imports/GambarHoneyPot.png";
-import awsCloudFoundationsJpg from "@/imports/certificates/cloudfoundations.jpg";
-import ccnaIntroductionJpg from "@/imports/certificates/CCNA.jpg";
-import databaseDesignJPG from "@/imports/certificates/database-design-english.jpg";
-import itEssentialsJpg from "@/imports/certificates/ITessen.jpg";
-import redHatJpg from "@/imports/certificates/redhat.jpg";
-import researchParticipationPng from "@/imports/certificates/vr-research-participation.png";
-import operatingSystemJpg from "@/imports/certificates/Sistemoperasi.jpg";
+import honeypotPreview from "@/imports/GambarHoneyPot.webp";
+import churchWebsitePreview from "@/imports/ChurchWebsite.webp";
+import taskManagerPreview from "@/imports/ManajemenTugasKuliah.webp";
+import awsCloudFoundationsWebp from "@/imports/certificates/cloudfoundations.webp";
+import ccnaIntroductionWebp from "@/imports/certificates/CCNA.webp";
+import databaseDesignWebp from "@/imports/certificates/database-design-english.webp";
+import itEssentialsWebp from "@/imports/certificates/ITessen.webp";
+import redHatWebp from "@/imports/certificates/redhat.webp";
+import researchParticipationWebp from "@/imports/certificates/vr-research-participation.webp";
+import operatingSystemWebp from "@/imports/certificates/Sistemoperasi.webp";
+import sifPanitiaWebp from "@/imports/certificates/sif-panitia.webp";
+import sifDay1Webp from "@/imports/certificates/sif-day1.webp";
+import sifDay2Webp from "@/imports/certificates/sif-day2.webp";
 import sifLogo from "@/imports/LogoSIF26.svg";
 import type { Skill } from "../types";
 
@@ -162,7 +167,7 @@ export const projects: Project[] = [
       "A church profile website built to present church identity, worship information, ministries, and contact access through a clean responsive public-facing web experience.",
     tags: ["Web Development", "Church Profile", "Responsive Design", "Vercel", "Frontend"],
     year: "2026",
-    image: "https://opengraph.githubassets.com/1/lelyonn/ChurchWebsite",
+    image: churchWebsitePreview,
     credit: "GitHub repository preview",
     github: "https://github.com/lelyonn/ChurchWebsite",
     live: "https://church-website-snowy-zeta.vercel.app/",
@@ -175,7 +180,7 @@ export const projects: Project[] = [
       "A full-stack academic productivity platform designed for university students to manage course assignments, monitor SKS credit loads, and track deadlines with interactive drag-and-drop Kanban boards and AI assistance.",
     tags: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "PostgreSQL"],
     year: "2026",
-    image: "https://opengraph.githubassets.com/1/lelyonn/ManajemenTugasKuliah",
+    image: taskManagerPreview,
     credit: "Live preview",
     github: null,
     live: "https://manajemen-tugas-kuliah-nu.vercel.app",
@@ -222,11 +227,20 @@ export const competitions = [
   },
 ];
 
+export const certificateCategories = [
+  "Technical & Industry",
+  "Academic & Research",
+  "Organization & Events",
+] as const;
+
+export type CertificateCategory = (typeof certificateCategories)[number];
+
 export type Certificate = {
   index: string;
   title: string;
   issuer: string;
   year: string;
+  category: CertificateCategory;
   description: string;
   tags: string[];
   credential: string;
@@ -240,11 +254,12 @@ export const certificates: Certificate[] = [
     title: "AWS Academy Cloud Foundations",
     issuer: "AWS Academy",
     year: "2026",
+    category: "Technical & Industry",
     description:
       "Completed AWS Academy Cloud Foundations training, covering cloud concepts, AWS core services, security, architecture, pricing, and support fundamentals.",
     tags: ["Cloud Computing", "AWS", "Foundations"],
     credential: "Graduate training badge",
-    mediaHref: awsCloudFoundationsJpg,
+    mediaHref: awsCloudFoundationsWebp,
     mediaType: "image",
   },
   {
@@ -252,11 +267,12 @@ export const certificates: Certificate[] = [
     title: "Database Design",
     issuer: "Oracle Academy",
     year: "2026",
+    category: "Technical & Industry",
     description:
       "Earned an English award of completion for Database Design, strengthening relational modeling, entity relationships, normalization, and schema planning.",
     tags: ["Database", "Data Modeling", "SQL"],
     credential: "Award of completion",
-    mediaHref: databaseDesignJPG,
+    mediaHref: databaseDesignWebp,
     mediaType: "image",
   },
   {
@@ -264,11 +280,12 @@ export const certificates: Certificate[] = [
     title: "IT Essentials",
     issuer: "Cisco Networking Academy",
     year: "2025",
+    category: "Technical & Industry",
     description:
       "Completed foundational IT training covering computer hardware, operating systems, networking basics, security, troubleshooting, and technical support workflows.",
     tags: ["IT Support", "Hardware", "Troubleshooting"],
     credential: "Course certificate",
-    mediaHref: itEssentialsJpg,
+    mediaHref: itEssentialsWebp,
     mediaType: "image",
   },
   {
@@ -276,11 +293,12 @@ export const certificates: Certificate[] = [
     title: "CCNA: Introduction to Networks",
     issuer: "Cisco Networking Academy",
     year: "2026",
+    category: "Technical & Industry",
     description:
       "Completed Cisco's introductory networking course covering network models, Ethernet, IP addressing, switching, routing basics, and connectivity troubleshooting.",
     tags: ["Networking", "Cisco", "CCNA"],
     credential: "Course certificate",
-    mediaHref: ccnaIntroductionJpg,
+    mediaHref: ccnaIntroductionWebp,
     mediaType: "image",
   },
   {
@@ -288,11 +306,12 @@ export const certificates: Certificate[] = [
     title: "Virtual Reality Multi User Research",
     issuer: "Universitas Sebelas Maret",
     year: "2026",
+    category: "Academic & Research",
     description:
       "Recognized as a research participant for a study analyzing user comfort in multi-user virtual reality classes using EEG signals and deep learning algorithms.",
     tags: ["Research", "Virtual Reality", "EEG"],
     credential: "Certificate of participation",
-    mediaHref: researchParticipationPng,
+    mediaHref: researchParticipationWebp,
     mediaType: "image",
   },
   {
@@ -300,11 +319,12 @@ export const certificates: Certificate[] = [
     title: "Red Hat System Administration",
     issuer: "Red Hat Academy",
     year: "2025",
+    category: "Technical & Industry",
     description:
       "Completed Linux system administration training focused on command-line workflows, users and permissions, file systems, services, and essential server operations.",
     tags: ["Linux", "Red Hat", "System Administration"],
     credential: "Course certificate",
-    mediaHref: redHatJpg,
+    mediaHref: redHatWebp,
     mediaType: "image",
   },
   {
@@ -312,11 +332,51 @@ export const certificates: Certificate[] = [
     title: "Operating Systems Fundamentals",
     issuer: "Universitas Sebelas Maret",
     year: "2025",
+    category: "Academic & Research",
     description:
       "Completed operating systems coursework covering process management, memory, file systems, scheduling, and core concepts behind modern computer systems.",
     tags: ["Operating Systems", "Computer Science", "Systems"],
     credential: "Course certificate",
-    mediaHref: operatingSystemJpg,
+    mediaHref: operatingSystemWebp,
+    mediaType: "image",
+  },
+  {
+    index: "08",
+    title: "Smart IT Festival 2026 — Committee",
+    issuer: "Himasif UNS",
+    year: "2026",
+    category: "Organization & Events",
+    description:
+      "Served as an active committee member for Smart IT Festival 2026, contributing to backend event platform engineering, participant data synchronization, and technical coordination.",
+    tags: ["Event Committee", "Organization", "Backend"],
+    credential: "Committee certificate",
+    mediaHref: sifPanitiaWebp,
+    mediaType: "image",
+  },
+  {
+    index: "09",
+    title: "Smart IT Festival 2026 — Seminar Day 1",
+    issuer: "Himasif UNS",
+    year: "2026",
+    category: "Organization & Events",
+    description:
+      "Participated in Smart IT Festival 2026 National Seminar Day 1, engaging in industry sessions covering digital ecosystem trends, modern technology developments, and tech career insights.",
+    tags: ["Seminar", "Technology Trends", "Participant"],
+    credential: "Certificate of participation",
+    mediaHref: sifDay1Webp,
+    mediaType: "image",
+  },
+  {
+    index: "10",
+    title: "Smart IT Festival 2026 — Seminar Day 2",
+    issuer: "Himasif UNS",
+    year: "2026",
+    category: "Organization & Events",
+    description:
+      "Participated in Smart IT Festival 2026 National Seminar Day 2, exploring topics in software engineering best practices, artificial intelligence integration, and engineering leadership.",
+    tags: ["Seminar", "Software Engineering", "Participant"],
+    credential: "Certificate of participation",
+    mediaHref: sifDay2Webp,
     mediaType: "image",
   },
 ];

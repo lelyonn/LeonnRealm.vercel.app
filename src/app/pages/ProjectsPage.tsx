@@ -79,6 +79,7 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
                       src={p.image}
                       alt={p.title}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                     />
                     <div
