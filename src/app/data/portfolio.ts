@@ -175,8 +175,8 @@ export const projects: Project[] = [
     tags: ["Laravel", "React", "Inertia.js", "Tailwind CSS", "PostgreSQL"],
     year: "2026",
     image: "https://opengraph.githubassets.com/1/lelyonn/ManajemenTugasKuliah",
-    credit: "GitHub repository preview",
-    github: "https://github.com/lelyonn/ManajemenTugasKuliah",
+    credit: "Live preview",
+    github: null,
     live: "https://manajemen-tugas-kuliah-nu.vercel.app",
   },
 ];
