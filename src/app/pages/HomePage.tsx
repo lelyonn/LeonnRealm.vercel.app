@@ -26,7 +26,7 @@ export function HomePage({
   navigate: (to: Page) => void;
 }) {
   const featuredPost = blogPosts[0];
-  const primaryRoles = techSkills.filter((skill) => skill.label !== "Web Development");
+  const primaryRoles = techSkills;
   const [activeCertCategory, setActiveCertCategory] = useState<"All" | CertificateCategory>("All");
   const [activeCertificateIndex, setActiveCertificateIndex] = useState(0);
   const [certAnimKey, setCertAnimKey] = useState(0);

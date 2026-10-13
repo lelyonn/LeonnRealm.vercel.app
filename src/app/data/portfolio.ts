@@ -64,24 +64,58 @@ export const techSkills: Skill[] = [
     summary:
       "I build small, considered web products end-to-end — from schema to pixel. Comfortable owning a feature from RFC to deploy.",
     highlights: [
-      "TypeScript-first across React, Node, and Bun runtimes",
-      "Comfortable shipping with Postgres, Redis, and SQLite",
+      "Full-stack development across React, Laravel, and Node runtimes",
+      "Comfortable shipping with PostgreSQL, MySQL, Redis, and SQLite",
       "Care a lot about loading states, empty states, and error states",
     ],
-    tools: ["React", "Next.js", "Node.js", "Tailwind"],
+    tools: ["React", "Laravel", "Next.js", "Node.js", "Tailwind"],
   },
   {
     label: "Web Development",
     icon: Globe,
     role: "Frontend & Web Engineer",
     summary:
-      "Marketing sites, internal tools, learning platforms. I enjoy the part where performance, accessibility, and taste have to agree.",
+      "Marketing sites, web tools, and design-to-code implementations. I enjoy the part where performance, interface clarity, and accessibility agree.",
     highlights: [
-      "Built sites with Astro, Next.js, and vanilla Vite + React",
-      "Lighthouse-conscious — perf budgets aren't decoration",
-      "Care about keyboard nav, focus states, and reduced motion",
+      "Built responsive applications with Next.js, Vite + React, Tailwind, and Bootstrap",
+      "Design-to-code workflow utilizing Figma wireframing and design tokens",
+      "Performance-focused with semantic HTML, keyboard nav, and reduced motion",
     ],
-    tools: ["Next.js", "Tailwind", "Cloudflare"],
+    tools: ["Next.js", "Tailwind", "Bootstrap", "Figma", "Cloudflare"],
+  },
+];
+
+export type TechStackGroup = {
+  title: string;
+  category: string;
+  description: string;
+  skills: string[];
+};
+
+export const coreTechStack: TechStackGroup[] = [
+  {
+    title: "Backend & Systems",
+    category: "01",
+    description: "Server runtimes, application frameworks, and relational databases.",
+    skills: ["Laravel", "Node.js", "Express", "PostgreSQL", "MySQL", "Linux (Red Hat)"],
+  },
+  {
+    title: "Frontend & Styling",
+    category: "02",
+    description: "Client architecture, responsive styling, and modern UI frameworks.",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Bootstrap", "Vite"],
+  },
+  {
+    title: "UI/UX & Product Design",
+    category: "03",
+    description: "Visual design, user flow planning, and interactive interface prototypes.",
+    skills: ["Figma", "Wireframing", "Component Systems", "Design Tokens", "Prototyping"],
+  },
+  {
+    title: "Security & Operations",
+    category: "04",
+    description: "Vulnerability analysis, network diagnostics, and penetration testing workflows.",
+    skills: ["Burp Suite", "Wireshark", "Kali Linux", "OWASP Top 10", "Threat Modeling"],
   },
 ];
 

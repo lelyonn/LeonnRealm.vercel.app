@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowUpRight, Calendar, ExternalLink, Github, GraduationCap, Instagram, Linkedin, MapPin } from "lucide-react";
 import portraitPhoto from "@/imports/fotoleon.webp";
-import { competitions, otherSkills, techSkills } from "../data/portfolio";
+import { competitions, coreTechStack, otherSkills, techSkills } from "../data/portfolio";
 import { GitHubStatImage } from "../components/github/GitHubStatImage";
 import { SharedFooter } from "../components/layout/SharedFooter";
 import { SkillMarquee } from "../components/skills/SkillMarquee";
@@ -273,7 +273,7 @@ export function AboutPage({
 
       <SkillMarquee
         eyebrow="Engineering & Security"
-        skills={techSkills.filter((skill) => skill.label !== "Web Development")}
+        skills={techSkills}
         direction="left"
         emphasis
         speed={40}
@@ -290,10 +290,59 @@ export function AboutPage({
         onSelect={onSkillSelect}
       />
 
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
+          <div className="mb-14 grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
+            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">(03) Stack & Tooling</div>
+            <div>
+              <h2
+                className="text-2xl tracking-[-0.02em] md:text-4xl reveal stagger-1"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                Technical toolkit &{" "}
+                <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}>disciplines.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
+            <div />
+            <div className="grid gap-6 sm:grid-cols-2">
+              {coreTechStack.map((group, idx) => (
+                <div
+                  key={group.category}
+                  className={`rounded-2xl border border-border bg-background p-6 transition-colors hover:bg-card md:p-8 reveal stagger-${Math.min(idx + 1, 4)}`}
+                >
+                  <div className="mb-4 flex items-center justify-between text-xs">
+                    <span className="uppercase tracking-[0.22em] text-[var(--portfolio-accent)]" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
+                      {group.title}
+                    </span>
+                    <span className="font-mono text-muted-foreground">{group.category}</span>
+                  </div>
+                  <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+                    {group.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((s) => (
+                      <span
+                        key={s}
+                        className="rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-foreground/85 transition-colors hover:border-foreground/40 hover:text-foreground"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="border-b border-border bg-card/20">
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
           <div className="mb-14 grid gap-6 md:grid-cols-[180px_1fr] md:gap-16">
-            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">(03) GitHub</div>
+            <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">(04) GitHub</div>
             <div className="flex items-end justify-between gap-4">
               <h2
                 className="text-2xl tracking-[-0.02em] md:text-4xl reveal stagger-1"
@@ -381,7 +430,7 @@ export function AboutPage({
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-12 md:py-32">
           <div className="mx-auto max-w-2xl">
             <div className="mb-6 text-xs uppercase tracking-[0.22em] text-muted-foreground reveal">
-              (03) Let&apos;s connect
+              (05) Let&apos;s connect
             </div>
             <h2
               className="mb-12 text-balance text-3xl tracking-[-0.03em] md:text-5xl reveal stagger-1"
