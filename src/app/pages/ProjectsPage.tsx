@@ -120,7 +120,7 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
                     <div className="mt-auto flex flex-wrap gap-2 pt-2">
                       {p.github && (
                         <a
-                          href={p.github} target="_blank" rel="noreferrer"
+                          href={p.github} target="_blank" rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                         >
@@ -129,7 +129,7 @@ export function ProjectsPage({ navigate }: { navigate: (to: Page) => void }) {
                       )}
                       {p.live && (
                         <a
-                          href={p.live} target="_blank" rel="noreferrer"
+                          href={p.live} target="_blank" rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                         >

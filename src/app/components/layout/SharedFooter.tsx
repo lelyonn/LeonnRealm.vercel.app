@@ -72,7 +72,7 @@ export function SharedFooter() {
                   <a
                     href={l.href}
                     target={l.href.startsWith("mailto:") || l.href.startsWith("http") ? "_blank" : undefined}
-                    rel={l.href.startsWith("mailto:") || l.href.startsWith("http") ? "noreferrer" : undefined}
+                    rel={l.href.startsWith("mailto:") || l.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     className="group inline-flex items-center gap-2 text-base text-foreground/85 hover:text-foreground"
                   >
                     <span className="text-muted-foreground transition-colors group-hover:text-[var(--portfolio-accent)]">→</span>
@@ -92,7 +92,7 @@ export function SharedFooter() {
                 { Icon: Github, href: "https://github.com/lelyonn", label: "GitHub" },
               ].map(({ Icon, href, label }) => (
                 <a
-                  key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
+                  key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:border-[var(--portfolio-accent)] hover:text-[var(--portfolio-accent)] hover:shadow-[0_0_16px_rgba(118,146,255,0.25)]"
                 >
                   <Icon className="h-4.5 w-4.5" strokeWidth={1.5} />

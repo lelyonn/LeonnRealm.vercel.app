@@ -148,7 +148,7 @@ export function SkillDialog({
                             <a
                               href={l.href}
                               target="_blank"
-                              rel="noreferrer"
+                              rel="noopener noreferrer"
                               className="group/link flex items-start justify-between gap-3 rounded-lg border border-border bg-background px-4 py-3 transition-colors hover:border-foreground"
                             >
                               <div className="min-w-0">

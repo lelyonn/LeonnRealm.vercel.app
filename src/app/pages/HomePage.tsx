@@ -217,7 +217,7 @@ export function HomePage({
                   <div className="mt-auto flex flex-wrap gap-2 pt-2">
                     {p.github && (
                       <a
-                        href={p.github} target="_blank" rel="noreferrer"
+                        href={p.github} target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                       >
@@ -226,7 +226,7 @@ export function HomePage({
                     )}
                     {p.live && (
                       <a
-                        href={p.live} target="_blank" rel="noreferrer"
+                        href={p.live} target="_blank" rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3.5 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                       >
@@ -306,7 +306,7 @@ export function HomePage({
                 <a
                   href={activeCertificate.mediaHref}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="group glow-pulse inline-flex items-center gap-3 rounded-2xl bg-[var(--portfolio-accent)] px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] text-background transition-transform hover:-translate-y-0.5"
                 >
                   View certificate
@@ -393,7 +393,7 @@ export function HomePage({
                 <a
                   href={activeCertificate.mediaHref}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="group glow-pulse inline-flex items-center gap-3 rounded-2xl bg-[var(--portfolio-accent)] px-7 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-background transition-transform hover:-translate-y-0.5"
                 >
                   View certificate

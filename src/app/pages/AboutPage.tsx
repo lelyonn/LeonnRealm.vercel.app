@@ -247,7 +247,7 @@ export function AboutPage({
                           <a
                             href={c.proofHref}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             className="group/btn ml-auto inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-1.5 text-xs transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                           >
                             <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} />
@@ -354,7 +354,7 @@ export function AboutPage({
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group inline-flex flex-shrink-0 items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 <Github className="h-4 w-4" strokeWidth={1.5} />
@@ -371,7 +371,7 @@ export function AboutPage({
                 <a
                   href="https://github.com/lelyonn"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="group overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
                 >
                   <GitHubStatImage
@@ -384,7 +384,7 @@ export function AboutPage({
                 <a
                   href="https://github.com/lelyonn"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="group overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20"
                 >
                   <GitHubStatImage
@@ -399,7 +399,7 @@ export function AboutPage({
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20 reveal stagger-1"
               >
                 <GitHubStatImage
@@ -412,7 +412,7 @@ export function AboutPage({
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group block overflow-hidden rounded-2xl border border-border bg-background transition-colors hover:border-foreground/20 reveal stagger-2"
               >
                 <GitHubStatImage
@@ -467,7 +467,7 @@ export function AboutPage({
               <a
                 href="https://discord.com/users/437897372610330625"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-card"
               >
                 <div className="flex items-center gap-4">
@@ -489,7 +489,7 @@ export function AboutPage({
               <a
                 href="https://www.instagram.com/leonardjhthh"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-card"
               >
                 <div className="flex items-center gap-4">
@@ -507,7 +507,7 @@ export function AboutPage({
               <a
                 href="https://www.linkedin.com/in/leonard-jonathan-s-a7a113324/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-card"
               >
                 <div className="flex items-center gap-4">
@@ -525,7 +525,7 @@ export function AboutPage({
               <a
                 href="https://github.com/lelyonn"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 px-6 py-5 transition-colors hover:bg-card"
               >
                 <div className="flex items-center gap-4">
