@@ -204,7 +204,7 @@ export const projects: Project[] = [
     image: churchWebsitePreview,
     credit: "GitHub repository preview",
     github: "https://github.com/lelyonn/ChurchWebsite",
-    live: "https://church-website-snowy-zeta.vercel.app/",
+    live: "https://geisccc.vercel.app/",
   },
   {
     n: "03",
